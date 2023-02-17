@@ -1,0 +1,9 @@
+export const ImgPersonagem1 = require('./personagem1.png');
+export const ImgPersonagem2 = require('./personagem2.png');
+export const ImgPersonagem3 = require('./personagem3.png');
+export const ImgPersonagem4 = require('./personagem4.png');
+export const ImgPersonagem5 = require('./personagem5.png');
+export const ImgPersonagem6 = require('./personagem6.png');
+export const ImgPersonagem7 = require('./personagem7.png');
+export const ImgPersonagem8 = require('./personagem8.png');
+export const ImgPersonagem9 = require('./personagem9.png');
