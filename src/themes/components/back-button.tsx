@@ -6,7 +6,7 @@ import { AppFont } from "../fonts";
 
 export interface AppProps {
     color?: string
-}
+} 
 
 export function AppBackButton({color}:AppProps) {
 
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontFamily: AppFont.NEGRITO,
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        fontSize: 18
     }
 });

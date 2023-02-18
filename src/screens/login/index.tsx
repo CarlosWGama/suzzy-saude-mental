@@ -14,7 +14,7 @@ export default function LoginScreen() {
     const nav = useNavigation<NativeStackNavigationProp<NavParamsRoot, "login">>();
 
     const handleLogin = async () => {
-
+        nav.reset({index: 0, routes: [{name: 'app'}]})
     }
 
 

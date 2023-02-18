@@ -4,6 +4,7 @@ import HomeScreen from '../screens/app/home';
 import CadastroScreen from '../screens/cadastro';
 import InicialScreen from '../screens/inicial';
 import LoginScreen from '../screens/login';
+import { NavegacaoApp } from './app';
 
 
 export type NavParamsRoot = {
@@ -22,7 +23,7 @@ export default function NavegacaoPrincipal() {
                 <Stack.Screen name='inicial' component={InicialScreen} />
                 <Stack.Screen name='login' component={LoginScreen} />
                 <Stack.Screen name='cadastro' component={CadastroScreen} />
-                <Stack.Screen name='app' component={HomeScreen} />
+                <Stack.Screen name='app' component={NavegacaoApp} />
             </Stack.Navigator>
         </NavigationContainer>
     )
