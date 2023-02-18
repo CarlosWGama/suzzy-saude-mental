@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AppColors } from "../colors";
 import { AppFont } from "../fonts";
 
@@ -9,17 +9,28 @@ export interface Props {
     onPress(): void
     color?: string,
     textColor: string
-    outline?:boolean
+    outline?:boolean,
+    carregando?:boolean
+    disabled?:boolean
 }
 
-export function AppButton({title, onPress, color, outline, textColor}: Props) {
+export function AppButton({title, onPress, color, outline, textColor, carregando, disabled}: Props) {
 
     return (
-        <TouchableOpacity onPress={onPress}>
-            <View style={[styles.container, {backgroundColor: (outline ? 'transparent' : color), borderColor: (outline ? color : 'transparent')}]}>
-                <Text style={[styles.title, { color: textColor}]}>{title}</Text>
-            </View>
-        </TouchableOpacity>
+        <>
+            { (!carregando && !disabled) && <TouchableOpacity onPress={onPress}>
+                <View style={[styles.container, {backgroundColor: (outline ? 'transparent' : color), borderColor: (outline ? color : 'transparent')}]}>
+                    <Text style={[styles.title, { color: (outline ? color : textColor)}]}>{title}</Text>
+                </View>
+            </TouchableOpacity>}
+
+            { (carregando || disabled) &&
+                <View style={[styles.container, {backgroundColor: (outline ? 'transparent' : 'lightgrey'), borderColor: (outline ? 'lightgrey' : 'transparent')}]}>
+                    { disabled && <Text style={[styles.title, { color: (outline ? 'lightgrey' : 'white')}]}>{title}</Text>}
+                    { carregando && <ActivityIndicator color={(outline ? 'lightgrey' : 'white')} size={18} />}
+                </View>
+            }
+        </>
     )
 }
 

@@ -48,7 +48,7 @@ export default function InicialScreen() {
 
                         {item.fim && <View style={styles.buttons}>
                             <AppButton title="Login/Criar Conta" onPress={() => navigation.reset({index: 0, routes: [{name: 'login'}]})} />
-                            <AppButton title="Acessar sem logar" outline onPress={() => navigation.reset({index: 0, routes: [{name: 'app'}]})} />
+                            <AppButton title="Acessar sem logar" color="white"  outline onPress={() => navigation.reset({index: 0, routes: [{name: 'app'}]})} />
                         </View>}
                     </View>
                 </View>
