@@ -2,6 +2,7 @@ import { ReactNode, useRef, useState } from "react";
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import { Modalize } from "react-native-modalize";
 import { ImgPersonagem6 } from "../../../assets/personagens";
+import { useContextApp } from "../../../provider/context";
 import { AppColors } from "../../../themes/colors";
 import { AppCard, AppSquareButton } from "../../../themes/components";
 import { AppButton } from "../../../themes/components/button";
@@ -13,6 +14,7 @@ import CVVModal from "./cvv";
 export default function HomeScreen() {
 
     const modal = useRef<Modalize>();
+    const  { usuario } = useContextApp();
     const [ itemModal, setItemModal ] = useState<ReactNode>(null);
 
 
@@ -41,7 +43,7 @@ export default function HomeScreen() {
                     <Image source={ImgPersonagem6} style={{height:150, width: 100, resizeMode: 'contain'}}/>
                     
                     <Text style={styles.cardText}>
-                        Seja bem vindo! {"\n"}
+                        Seja bem vindo {usuario?.nome}! {"\n\n"}
                         Nessa seção do aplicativo você poderá conhecer um pouco sobre os cuidados e apoios que você pode encontrar em relação a sua saúde mental
                     </Text>
                 </View>

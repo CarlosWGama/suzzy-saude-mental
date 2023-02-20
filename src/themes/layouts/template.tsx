@@ -11,12 +11,13 @@ export interface AppTemplate {
     backButton?: boolean
     background?: 'wave'|'abstract'|'abstract2',
     color?: string,
-    fullComponent?:ReactNode
+    fullComponent?:ReactNode, 
+    smallHeader?: boolean
 
 }
 
 
-export default function AppTemplate({backButton, children, titulo, background, color, fullComponent}:AppTemplate) {
+export default function AppTemplate({backButton, children, titulo, background, color, fullComponent, smallHeader}:AppTemplate) {
 
     const getBG = () => {
         if (background == 'abstract') return require('./../../assets/efeitos/abstract.png')
@@ -30,7 +31,7 @@ export default function AppTemplate({backButton, children, titulo, background, c
                 <StatusBar style="light" />
 
                 {/* HEADER */}
-                <View style={styles.header}>
+                <View style={[styles.header, {height: smallHeader ? 75 : 150}]}>
                     <>
                         {backButton && <AppBackButton color="white" />}<Text></Text>
                     </>

@@ -8,12 +8,15 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { NavParamsRoot } from "../../navigation";
 import * as Yup from 'yup';
+import { useContextApp } from "../../provider/context";
 
 export default function LoginScreen() {
 
     const nav = useNavigation<NativeStackNavigationProp<NavParamsRoot, "login">>();
+    const  { setUsuario } = useContextApp();
 
     const handleLogin = async () => {
+        setUsuario({email: 'carlos@teste.com', nome: 'Carlos'})
         nav.reset({index: 0, routes: [{name: 'app'}]})
     }
 

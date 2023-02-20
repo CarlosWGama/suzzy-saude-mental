@@ -6,7 +6,9 @@ import AppTemplate from "../../../themes/layouts/template";
 import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp  } from '@react-navigation/native-stack'
 import { NavParamsRoot } from "../../../navigation";
+
 export default function ConfigDeslogadoScreen() {
+
 
     const nav = useNavigation<NativeStackNavigationProp<NavParamsRoot, "app">>();
 

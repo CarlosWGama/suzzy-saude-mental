@@ -2,6 +2,7 @@ import { Text, TextInput, StyleSheet, KeyboardTypeOptions } from 'react-native';
 import { AppColors } from '../colors';
 import React from 'react';
 import { AppFont } from '../fonts';
+import MaskInput from 'react-native-mask-input';
 
 export interface AppProps {
     onChangeText(text: string):void,
@@ -12,7 +13,8 @@ export interface AppProps {
     touched?: boolean,
     keyboardType?:KeyboardTypeOptions
     onBlur?(campo: string):void
-
+    mask?: any,
+    value?: string
 }
 
 
@@ -21,13 +23,26 @@ export function AppInput(props: AppProps) {
     return (
         <>
             {props.title && <Text style={styles.text}>{props.title}</Text>}
-            <TextInput 
+            {/* COM MASCARA */}
+            { props.mask && 
+                 <MaskInput 
+                    placeholder={props.placeholder}
+                    onChangeText={props.onChangeText}
+                    secureTextEntry={props.senha}
+                    keyboardType={props.keyboardType}
+                    onBlur={props.onBlur}
+                    value={props.value}
+                    mask={props.mask}
+                    style={styles.input} /> }
+            {/* SEM MASCARA */}
+            { !props.mask && <TextInput 
                 placeholder={props.placeholder}
                 onChangeText={props.onChangeText}
                 secureTextEntry={props.senha}
                 keyboardType={props.keyboardType}
+                value={props.value}
                 onBlur={props.onBlur}
-                style={styles.input} />
+                style={styles.input} />}
             {props.touched && props.error && <Text style={styles.error}>{props.error} ***</Text>}
         </>
     )

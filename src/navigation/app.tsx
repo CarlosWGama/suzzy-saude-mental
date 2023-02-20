@@ -4,10 +4,15 @@ import ConfigDeslogadoScreen from '../screens/app/config/config-deslogado';
 import HomeScreen from '../screens/app/home';
 import { MaterialIcons } from '@expo/vector-icons';
 import { AppColors } from '../themes/colors';
+import { useContextApp } from '../provider/context';
+import ConfigScreen from '../screens/app/config/config';
+import { NavegacaoConfig } from './config';
 
 const Tab = createBottomTabNavigator();
 
 export function NavegacaoApp() {
+
+
     return (
         <Tab.Navigator screenOptions={{
             tabBarActiveTintColor: 'white',
@@ -30,7 +35,7 @@ export function NavegacaoApp() {
 
                 }}
             />
-            <Tab.Screen name="config" component={ConfigDeslogadoScreen}
+            <Tab.Screen name="config" component={NavegacaoConfig}
                 options={{
                     tabBarLabel: "Configuração", 
                     tabBarIcon: (icon) => <MaterialIcons name="settings" size={20} color={icon.color} />,

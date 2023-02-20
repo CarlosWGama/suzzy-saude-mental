@@ -54,7 +54,7 @@ export default function AjudaScreen() {
                     <Image source={ImgPersonagem2} style={{height:150, width: 100, resizeMode: 'contain'}}/>
                     
                     <Text style={styles.cardText}>
-                        Ajuda rápida! {"\n"}
+                        Ajuda rápida! {"\n\n"}
                         Caso precise de uma ajuda rápida, pode encontrar aqui!
                     </Text>
                 </View>
