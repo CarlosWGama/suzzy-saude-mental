@@ -1,13 +1,39 @@
+import { ReactNode, useRef, useState } from "react";
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { Modalize } from "react-native-modalize";
 import { ImgPersonagem6 } from "../../../assets/personagens";
 import { AppColors } from "../../../themes/colors";
 import { AppCard, AppSquareButton } from "../../../themes/components";
+import { AppButton } from "../../../themes/components/button";
 import { AppFont } from "../../../themes/fonts";
 import AppTemplate from "../../../themes/layouts/template";
+import SobreAppModal from "./app";
+import CVVModal from "./cvv";
 
 export default function HomeScreen() {
+
+    const modal = useRef<Modalize>();
+    const [ itemModal, setItemModal ] = useState<ReactNode>(null);
+
+
+    const handleOpenModal = async (item: ReactNode) => {
+        setItemModal(item);
+        modal.current?.open()
+    }   
+
     return (
-        <AppTemplate titulo="Informações" >
+        <AppTemplate titulo="Informações"
+        
+            fullComponent={
+            <Modalize 
+                adjustToContentHeight
+                childrenStyle={{height: '85%'}}
+                ref={modal}
+                HeaderComponent={<AppButton title="FECHAR" color={AppColors.DANGER} onPress={() => modal.current?.close()}/>}    
+            >
+                {itemModal}
+            </Modalize>}
+        >
             
             {/* HEADER */}
             <AppCard style={{marginTop: -100}}>
@@ -26,11 +52,10 @@ export default function HomeScreen() {
 
             <ScrollView>
                 <View style={styles.opcoes}>
-                    <AppSquareButton title="APP"  />
-                    <AppSquareButton title="CVV"  />
-                    <AppSquareButton title="Dicas"  />
-                    <AppSquareButton title="Termometro transtorno" textStyle={{fontSize: 12}}/>
-
+                    <AppSquareButton title="APP" onPress={() => handleOpenModal(<SobreAppModal/>)} />
+                    <AppSquareButton title="CVV"  onPress={() => handleOpenModal(<CVVModal/>)} />
+                    <AppSquareButton title="Dicas" onPress={() => handleOpenModal(<CVVModal/>)} />
+                    <AppSquareButton title="Termometro transtorno" textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<CVVModal/>)}/>
                 </View>
             </ScrollView>
         </AppTemplate> 

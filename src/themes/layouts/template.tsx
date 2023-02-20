@@ -10,12 +10,13 @@ export interface AppTemplate {
     titulo: string,
     backButton?: boolean
     background?: 'wave'|'abstract'|'abstract2',
-    color?: string
+    color?: string,
+    fullComponent?:ReactNode
 
 }
 
 
-export default function AppTemplate({backButton, children, titulo, background, color}:AppTemplate) {
+export default function AppTemplate({backButton, children, titulo, background, color, fullComponent}:AppTemplate) {
 
     const getBG = () => {
         if (background == 'abstract') return require('./../../assets/efeitos/abstract.png')
@@ -40,6 +41,8 @@ export default function AppTemplate({backButton, children, titulo, background, c
                 <View style={styles.main}>
                     {children}
                 </View>
+
+                {fullComponent}
             </ImageBackground>
         </View>
     )
