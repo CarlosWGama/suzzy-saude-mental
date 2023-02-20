@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
         elevation: 9,
     },
     title: {
-        fontFamily: AppFont.NEGRITO
+        fontFamily: AppFont.NEGRITO,
+        textAlign: 'center'
     }
 });
