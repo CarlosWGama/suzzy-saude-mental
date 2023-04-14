@@ -18,6 +18,8 @@ function CVVModal(props: AppProps) {
     ]
 
 
+
+
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>CVV</Text>

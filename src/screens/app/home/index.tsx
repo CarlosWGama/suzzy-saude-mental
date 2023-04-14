@@ -54,6 +54,7 @@ export default function HomeScreen() {
 
             <View style={styles.opcoes}>
                 <AppSquareButton title={"Tipos de \nTranstornos"} textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<SobreAppModal/>)} />
+                { usuario && <AppSquareButton title="Registros Diários"  onPress={() => handleOpenModal(<CVVModal/>)} />}
                 <AppSquareButton title="CVV"  onPress={() => handleOpenModal(<CVVModal/>)} />
                 <AppSquareButton title="Dicas" onPress={() => handleOpenModal(<CVVModal/>)} />
                 <AppSquareButton title="TermoMental" textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<CVVModal/>)}/>
