@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, ScrollView, Linking, Alert } from "react-native";
 import { ImgPersonagem2 } from "../../../assets/personagens";
 import { AppColors } from "../../../themes/colors";
-import { AppCard } from "../../../themes/components";
+import { AppButton, AppCard } from "../../../themes/components";
 import { AppSquareButton } from "../../../themes/components/square-button";
 import { AppFont } from "../../../themes/fonts";
 import AppTemplate from "../../../themes/layouts/template";
@@ -18,8 +18,8 @@ export default function AjudaScreen() {
     }
 
     // LIGAR PARA SAMU
-    const handleSamu = async () => {
-        Alert.alert('Ligar Samu', 'Você deseja realmente ligar para a samu?', [
+    const handleTelefone = async (local:string, tel: string) => {
+        Alert.alert(`Ligar ${local}`, `Você deseja realmente ligar para ${local}?`, [
             {text: 'SIM' },
             {text: 'NÃO, foi engano' },
         ])
@@ -56,18 +56,28 @@ export default function AjudaScreen() {
                     <Text style={styles.cardText}>
                         Ajuda rápida! {"\n\n"}
                         Caso precise de uma ajuda rápida, pode encontrar aqui!
+                        Pode falar a qualquer momento com a equipe do CVV ou enviar sua localização atual a seus conhecidos pedindo ajuda
                     </Text>
                 </View>
             </AppCard>
 
             {/* OPÇÕES */}
-            <Text style={styles.informacoes}>INFORMAÇÕES</Text>
+            <Text style={styles.informacoes}>Busque seu apoio</Text>
 
             <ScrollView>
                 <View style={styles.opcoes}>
                     <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do CVV" onPress={handleWhatsApp} />
-                    <AppSquareButton color={AppColors.SECONDARY} title="Ligar Samu" onPress={handleSamu} />
+                    {/* <AppSquareButton color={AppColors.SECONDARY} title="Ligar Samu" onPress={handleSamu} /> */}
                     <AppSquareButton color={AppColors.SECONDARY} title="Enviar minha localização" onPress={handleLocalizacao}  />
+                </View>
+            </ScrollView>
+            <Text style={styles.informacoes}>Ligar para</Text>
+
+            <ScrollView>
+                <View style={styles.opcoes}>
+                    <AppButton color={AppColors.SECONDARY} title="Hospital" onPress={() => handleTelefone('Hospital', '35201585')} />
+                    <AppButton color={AppColors.SECONDARY} title="Samu" onPress={() => handleTelefone('Samu', '182')} />
+                    <AppButton color={AppColors.SECONDARY} title="Polícia" onPress={() => handleTelefone('Polícia', '190')}  />
                 </View>
             </ScrollView>
         </AppTemplate> 
@@ -82,7 +92,7 @@ const styles = StyleSheet.create({
     },
     cardText: {
         fontFamily: AppFont.PADRAO,
-        fontSize: 17,
+        fontSize: 14,
         textAlign: 'justify',
         width: 200
     },
