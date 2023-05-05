@@ -9,15 +9,25 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { NavParamsRoot } from "../../navigation";
 import * as Yup from 'yup';
 import { useContextApp } from "../../provider/context";
+import { useUsuariosService } from "../../provider/usuario.service";
+import Toast from 'react-native-toast-message';
 
 export default function LoginScreen() {
 
     const nav = useNavigation<NativeStackNavigationProp<NavParamsRoot, "login">>();
     const  { setUsuario } = useContextApp();
+    const usuarioService = useUsuariosService();
 
-    const handleLogin = async () => {
-        setUsuario({email: 'carlos@teste.com', nome: 'Carlos'})
-        nav.reset({index: 0, routes: [{name: 'app'}]})
+    const handleLogin = async ({email, senha}:any) => {
+
+        const response = await usuarioService.login(email, senha);
+
+        if (response.sucesso) {
+            setUsuario(response.usuario)
+            nav.reset({index: 0, routes: [{name: 'app'}]})
+        } else {
+            Toast.show({type:'error', text1: 'Usuário ou senha incorreta'});
+        }
     }
 
 
@@ -26,6 +36,7 @@ export default function LoginScreen() {
             {/* HEADER */}
             <Text style={styles.title}>Realize o seu login</Text>
             <Image source={ImgPersonagem7} style={styles.img}/>
+            <Toast />
             
             {/* LOGIN */}
             <Formik

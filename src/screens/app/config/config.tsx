@@ -8,15 +8,18 @@ import { NativeStackNavigationProp  } from '@react-navigation/native-stack'
 import { NavParamsRoot } from "../../../navigation";
 import { useContextApp } from "../../../provider/context";
 import { NavParamsConfig } from "../../../navigation/config";
+import { useUsuariosService } from "../../../provider/usuario.service";
 
 export default function ConfigScreen() {
 
     
     const nav = useNavigation<NativeStackNavigationProp<NavParamsConfig, "index_config">>();
     const { setUsuario } = useContextApp();
+    const usuarioService = useUsuariosService();
 
     const handleDeslogar = async () => {
         setUsuario(null)
+        usuarioService.logout();
         nav.reset({index: 0, routes: [{name:'login'}]})
     }
 

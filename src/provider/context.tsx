@@ -18,7 +18,6 @@ export function ContextAppProvider(props: IContextAppProps) {
 
     const [ usuario, setUsuario ] = useState<Usuario|null>(null);
 
-
     return (
         <ContextApp.Provider value={{usuario, setUsuario}}>
             {props.children}
