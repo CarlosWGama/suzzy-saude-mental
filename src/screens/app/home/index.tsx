@@ -10,6 +10,7 @@ import { AppFont } from "../../../themes/fonts";
 import AppTemplate from "../../../themes/layouts/template";
 import SobreAppModal from "./app";
 import CVVModal from "./cvv";
+import TiposTranstornosModal from "./tipos-transtornos";
 
 export default function HomeScreen() {
 
@@ -29,7 +30,9 @@ export default function HomeScreen() {
             fullComponent={
             <Modalize 
                 adjustToContentHeight
-                childrenStyle={{height: '85%'}}
+                modalTopOffset={80}
+                modalStyle={{flex: 1}}
+                disableScrollIfPossible={false}
                 ref={modal}
                 HeaderComponent={<AppButton title="FECHAR" color={AppColors.DANGER} onPress={() => modal.current?.close()}/>}    
             >
@@ -53,10 +56,10 @@ export default function HomeScreen() {
             <Text style={styles.informacoes}>INFORMAÇÕES</Text>
 
             <View style={styles.opcoes}>
-                <AppSquareButton title={"Tipos de \nTranstornos"} textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<SobreAppModal/>)} />
+                <AppSquareButton title={"Tipos de \nTranstornos"} textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<TiposTranstornosModal/>)} />
                 { usuario && <AppSquareButton title="Registros Diários"  onPress={() => handleOpenModal(<CVVModal/>)} />}
                 <AppSquareButton title="CVV"  onPress={() => handleOpenModal(<CVVModal/>)} />
-                <AppSquareButton title="Dicas" onPress={() => handleOpenModal(<CVVModal/>)} />
+                <AppSquareButton title="Dicas" onPress={() => handleOpenModal(<SobreAppModal/>)} />
                 <AppSquareButton title="TermoMental" textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<CVVModal/>)}/>
             </View>
         </AppTemplate> 
