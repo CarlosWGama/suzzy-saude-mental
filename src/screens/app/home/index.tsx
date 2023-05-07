@@ -18,12 +18,12 @@ export default function HomeScreen() {
     const  { usuario } = useContextApp();
     const [ itemModal, setItemModal ] = useState<ReactNode>(null);
 
-
+    //=======================================================================================
     const handleOpenModal = async (item: ReactNode) => {
         setItemModal(item);
         modal.current?.open()
     }   
-
+    //=======================================================================================
     return (
         <AppTemplate titulo="Informações"
         

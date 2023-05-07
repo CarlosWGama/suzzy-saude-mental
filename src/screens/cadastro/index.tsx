@@ -17,7 +17,8 @@ export default function CadastroLogin() {
 
     const nav = useNavigation<NativeStackNavigationProp<NavParamsRoot, "login">>();
     const usuarioService = useUsuariosService();
-    
+
+    //=======================================================================================
     const handleCadastro = async (dados:any) => {
 
         const resposta = await usuarioService.cadastro(dados)
@@ -29,8 +30,7 @@ export default function CadastroLogin() {
             Toast.show({type: 'error', text1: 'Falha ao cadastrar', text2: resposta.erro});
         }  
     }
-
-
+    //=======================================================================================
     return (
         <View style={styles.container}>
             {/* HEADER */}

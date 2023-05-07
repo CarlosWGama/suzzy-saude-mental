@@ -18,6 +18,7 @@ export default function LoginScreen() {
     const  { setUsuario } = useContextApp();
     const usuarioService = useUsuariosService();
 
+    //=======================================================================================
     const handleLogin = async ({email, senha}:any) => {
 
         const response = await usuarioService.login(email, senha);
@@ -30,7 +31,7 @@ export default function LoginScreen() {
         }
     }
 
-
+    //=======================================================================================
     return (
         <View style={styles.container}>
             {/* HEADER */}

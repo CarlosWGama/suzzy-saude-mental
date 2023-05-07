@@ -17,19 +17,19 @@ export default function ConfigScreen() {
     const { setUsuario } = useContextApp();
     const usuarioService = useUsuariosService();
 
+    //=======================================================================================
     const handleDeslogar = async () => {
         setUsuario(null)
         usuarioService.logout();
         nav.reset({index: 0, routes: [{name:'login'}]})
     }
-
+    //=======================================================================================
     return (
     <AppTemplate smallHeader titulo="Configuração" background="abstract2" color={AppColors.TERTIARY}>
         <Text style={styles.text}>Opções</Text>
 
         <AppButton title="DESLOGAR"  color={AppColors.TERTIARY} onPress={handleDeslogar} />
         <AppButton title="ALTERAR DADOS"  outline color={AppColors.TERTIARY} onPress={() => nav.push('alterar_dados')} />
-        <AppButton title="ALTERAR SENHA"  outline color={AppColors.TERTIARY} onPress={() => nav.push('alterar_senha')} />
         <AppButton title="ALTERAR CONTATO DE CONFIANÇA" outline color={AppColors.TERTIARY} onPress={() => nav.push('alterar_contato')} />
     </AppTemplate>
     )
