@@ -7,3 +7,4 @@ export const ImgPersonagem6 = require('./personagem6.png');
 export const ImgPersonagem7 = require('./personagem7.png');
 export const ImgPersonagem8 = require('./personagem8.png');
 export const ImgPersonagem9 = require('./personagem9.png');
+export const ImgPersonagem10 = require('./personagem10.png');

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image, ScrollView, Linking, Alert } from "react-native";
-import { ImgPersonagem2 } from "../../../assets/personagens";
+import { ImgPersonagem1 } from "../../../assets/personagens";
 import { AppColors } from "../../../themes/colors";
 import { AppButton, AppCard } from "../../../themes/components";
 import { AppSquareButton } from "../../../themes/components/square-button";
@@ -51,7 +51,7 @@ export default function AjudaScreen() {
             {/* HEADER */}
             <AppCard style={{marginTop: -100}}>
                 <View style={styles.card}>
-                    <Image source={ImgPersonagem2} style={{height:150, width: 100, resizeMode: 'contain'}}/>
+                    <Image source={ImgPersonagem1} style={{height:150, width: 100, resizeMode: 'contain'}}/>
                     
                     <Text style={styles.cardText}>
                         Ajuda rápida! {"\n\n"}

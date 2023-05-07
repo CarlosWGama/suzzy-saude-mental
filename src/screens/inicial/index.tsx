@@ -1,5 +1,5 @@
 import AppIntroSlider from "react-native-app-intro-slider";
-import { ImgPersonagem1, ImgPersonagem2, ImgPersonagem3, ImgPersonagem4 } from "../../assets/personagens";
+import { ImgPersonagem1, ImgPersonagem2, ImgPersonagem3, ImgPersonagem4, ImgPersonagem5 } from "../../assets/personagens";
 import { AppConfig } from "../../config/app";
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { AppFont } from "../../themes/fonts";
@@ -22,8 +22,8 @@ export default function InicialScreen() {
     
     const dados: IntroSlide[] = [
         {titulo: 'Bem vindo!', descricao: `Seja muito bem vindo ao ${AppConfig.nome}, nós estamos aqui para te ajudar!`, imagem: ImgPersonagem1, cor:'#a8e6cf'},
-        {titulo: AppConfig.nome, descricao: `O ${AppConfig.nome} é um aplicativo voltado a saude mental, onde você vamos aos poucos te ajudando a saber se possui algum problema que precise de apoio`, imagem: ImgPersonagem2, cor:'#dcedc1'},
-        {titulo: 'Suporte 24h', descricao: `Aqui você também terá suporte 24h da nossa equipe, além de botões de acesso rápido a setores de apoio`, imagem: ImgPersonagem3, cor:'#ffd3b6'},
+        {titulo: AppConfig.nome, descricao: `O ${AppConfig.nome} é um aplicativo voltado a saude mental, onde vamos aos poucos te ajudando a saber se possui algum problema que precise de apoio`, imagem: ImgPersonagem3, cor:'#dcedc1'},
+        {titulo: 'Suporte 24h', descricao: `Aqui você também terá suporte 24h da nossa equipe, além de botões de acesso rápido a setores de apoio`, imagem: ImgPersonagem5, cor:'#ffd3b6'},
         {titulo: 'Seu acesso', descricao: `Queremos que seja muito bem vindo! Então vamos começar!`, imagem: ImgPersonagem4, cor:'#ffaaa5', fim:true}
     ]
     

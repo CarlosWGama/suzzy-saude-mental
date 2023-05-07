@@ -1,7 +1,7 @@
 import { ReactNode, useRef, useState } from "react";
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import { Modalize } from "react-native-modalize";
-import { ImgPersonagem6 } from "../../../assets/personagens";
+import { ImgPersonagem9 } from "../../../assets/personagens";
 import { useContextApp } from "../../../provider/context";
 import { AppColors } from "../../../themes/colors";
 import { AppCard, AppSquareButton } from "../../../themes/components";
@@ -43,7 +43,7 @@ export default function HomeScreen() {
             {/* HEADER */}
             <AppCard style={{marginTop: -100}}>
                 <View style={styles.card}>
-                    <Image source={ImgPersonagem6} style={{height:150, width: 100, resizeMode: 'contain'}}/>
+                    <Image source={ImgPersonagem9} style={{height:150, width: 100, resizeMode: 'contain'}}/>
                     
                     <Text style={styles.cardText}>
                         Seja bem vindo {usuario?.nome}! {"\n\n"}
