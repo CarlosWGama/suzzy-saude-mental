@@ -32,6 +32,7 @@ export default function AlterarContatoScreen() {
             {text: 'Cancelar'},
             {text: 'Confirmar', onPress: async() => {
                 //@ts-ignore
+                console.log(contato.id)
                 await contatosServices.remover(contato.id)
                 buscarContatos();
                 Toast.show({text1: 'Removido com sucesso'})
@@ -42,6 +43,7 @@ export default function AlterarContatoScreen() {
     const handleCadastrar = async(dados: any) => {
         modal.current?.close()
         const resposta = await contatosServices.cadastrar(dados)
+        console.log(resposta)
         if (resposta.sucesso) {
             Toast.show({text1: 'Contato cadastrado com sucesso'});
             buscarContatos()
