@@ -8,11 +8,8 @@ const ContatosService = {
     //Cadastra contato ao usuário logado
     cadastrar: async (data:any): Promise<{sucesso:boolean, erro?:any}> => {
         try {
-            console.log('A')
             const response = await api.post('/contatos', data);
-            console.log(response)
-            console.log('B')
-            return {sucesso: response.data.sucesso};
+            return {sucesso: response.status == 201};
         } catch(e:any) {
             //console.log(e.response)
             return {sucesso:false, erro: e.response?.data?.message}
@@ -30,7 +27,7 @@ const ContatosService = {
             //     {id: 1, nome: 'Carlos', telefone: '(82) 9 9999-9999', usuario_id: 1},
             //     {id: 2, nome: 'João', telefone: '(82) 9 9999-9999', usuario_id: 1},
             // ];
-            return {sucesso: response.data.sucesso, contatos};
+            return {sucesso: response.status == 200, contatos};
         } catch (e:any) {
             console.log(e);
             return {sucesso:false, erro: e.response?.data?.message}
@@ -41,7 +38,7 @@ const ContatosService = {
     remover: async (contatoID: number): Promise<{sucesso: boolean, erro?:any}> => {
         try {
             const response = await api.delete(`/contatos/${contatoID}`);
-            return {sucesso: response.data.sucesso};
+            return {sucesso: response.status == 200};
         } catch (e:any) {
             return {sucesso:false, erro: e.response?.data?.message}
         }

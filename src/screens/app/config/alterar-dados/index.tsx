@@ -98,9 +98,9 @@ export default function AlterarDadosScreen() {
                             title="Gênero"
                             selected={values.genero}
                             options={[
-                                {label: 'Masculino', value:'masculino'},
-                                {label: 'Feminino', value:'feminino'},
-                                {label: 'Outro', value:'outros'},]}
+                                {label: 'Masculino', value:'1'},
+                                {label: 'Feminino', value:'2'},
+                                {label: 'Outro', value:'3'},]}
                         />
                         {/* ESCOLARIDADE */}
                         <AppInput 
@@ -114,8 +114,8 @@ export default function AlterarDadosScreen() {
                             title="Zona Residêncial"
                             selected={values.zona_residencial}
                             options={[
-                                {label: 'Urbana', value:'urbana'},
-                                {label: 'Rural', value:'rural'},    
+                                {label: 'Urbana', value:'1'},
+                                {label: 'Rural', value:'2'},    
                             ]}
                         />
                         {/* ESTADO CIVIL */}
@@ -124,12 +124,12 @@ export default function AlterarDadosScreen() {
                             title="Estado Cívil"
                             selected={values.estado_civil}
                             options={[
-                                {label: 'Solteiro', value:'solteiro'},
-                                {label: 'Casado', value:'casado'},    
-                                {label: 'Separado', value:'separado'},    
-                                {label: 'Divorciado', value:'divorciado'},    
-                                {label: 'Viúvo', value:'viuvo'},    
-                                {label: 'Não Informar', value:'nao_informar'},    
+                                {label: 'Solteiro', value:'1'},
+                                {label: 'Casado', value:'2'},    
+                                {label: 'Separado', value:'3'},    
+                                {label: 'Divorciado', value:'4'},    
+                                {label: 'Viúvo', value:'5'},    
+                                {label: 'Não Informar', value:'6'},    
                             ]}
                         />
                         {/* ORIENTAÇÃO SEXUAL */}
@@ -138,33 +138,34 @@ export default function AlterarDadosScreen() {
                             title="Orientação Sexual"
                             selected={values.orientacao_sexual}
                             options={[
-                                {label: 'Heterossexual', value:'heterossexual'},
-                                {label: 'Homossexual', value:'homossexual'},    
-                                {label: 'Bissexual', value:'bissexual'},    
-                                {label: 'Outro', value:'outros'},    
-                                {label: 'Não Informar', value:'nao_informar'}    
+                                {label: 'Heterossexual', value:'1'},
+                                {label: 'Homossexual', value:'2'},    
+                                {label: 'Bissexual', value:'3'},    
+                                {label: 'Outro', value:'4'},    
+                                {label: 'Não Informar', value:'6'}    
                             ]}
                         />
                         {/* PROBLEMA MENTAL */}
                         <AppCheck
                             title="Possui algum problema mental?"
                             onChange={(selected) => setFieldValue('problema_mental', selected)}
-                            selected={values.problema_mental}
-                        />
-                        {/* ESCOLARIDADE */}
-                        {values.problema_mental && <AppInput 
+                            selected={values.problema_mental} />
+                            
+                        {/* PROBLEMAS MENTAIS QUAIS */}
+                        {values.problema_mental == 1 && <AppInput 
                             title="Quais problemas mentais?" placeholder="Informe seus problemas mentais"  error={errors.problema_mental_quais} touched={touched.problema_mental_quais}
                             onBlur={handleBlur("problema_mental_quais")}
                             value={values.problema_mental_quais}
                             onChangeText={handleChange("problema_mental_quais")}/>}
-                        {/* PROBLEMA MENTAL */}
+                        
+                        {/* SUO DE MEDICAMENTOS*/}
                         <AppCheck
                             title="Faz uso de medicamento?"
                             onChange={(selected) => setFieldValue('uso_medicamento', selected)}
-                            selected={values.uso_medicamento}
-                        />
-                        {/* ESCOLARIDADE */}
-                        {values.uso_medicamento && <AppInput 
+                            selected={values.uso_medicamento} />
+                        
+                        {/* SUO DE MEDICAMENTOS - QUAIS*/}
+                        {values.uso_medicamento == 1 && <AppInput 
                             title="Quais medicamentos?" placeholder="Informe seus medicamentos"  error={errors.uso_medicamento_quais} touched={touched.uso_medicamento_quais}
                             onBlur={handleBlur("uso_medicamento_quais")}
                             value={values.uso_medicamento_quais}

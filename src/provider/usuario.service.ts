@@ -7,6 +7,7 @@ const UsuariosService = {
     //Cadastra usuário
     cadastro: async (data:any): Promise<{sucesso:boolean, usuario?:any, erro?:any}> => {
         try {
+            console.log(data);
             const response = await api.post('/usuarios', data);
             return {sucesso: true, usuario: response.data};
         } catch(e:any) {
@@ -19,7 +20,7 @@ const UsuariosService = {
     login: async(email:string, senha:string): Promise<{sucesso: boolean, jwt?: string, usuario?:any, erro?:any}> => {
         
         try {
-            const response = await api.post('/usuarios/login', {email, senha});
+            const response = await api.post('/login', {email, senha});
             await AsyncStorage.setItem('jwt', response.data.jwt)
             console.log(response)
             return {sucesso: true, jwt:response.data.jwt, usuario: response.data.usuario};
@@ -32,14 +33,14 @@ const UsuariosService = {
     //Buscar dados do usuário
     buscarPerfil: async (): Promise<{sucesso: boolean, usuario?:any, erro?:any}> => {
         try {
-            const response = await api.get('/usuarios/perfil');
+            const response = await api.get('/usuarios');
+            
             const usuario = {
                 nome: response.data.nome,
                 email: response.data.email,
-                ...response.data.extra
+                ...response.data.extras
             }
-            usuario.data_nascimento = usuario.data_nascimento.split('-').reverse().join('/');
-
+            console.log(usuario);
             return {sucesso: true, usuario};
         } catch (e:any) {
             return {sucesso:false, erro: e.response?.data?.message}
@@ -52,7 +53,7 @@ const UsuariosService = {
             //O servidor busca o id do usuário autenticado
             delete usuario.id;
             delete usuario.email;
-            await api.patch(`/usuarios/0`, usuario);
+            await api.put(`/usuarios`, usuario);
             return {sucesso: true};
         } catch(e:any) {
             //console.log(e.response)

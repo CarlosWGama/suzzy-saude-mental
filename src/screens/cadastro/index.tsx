@@ -44,7 +44,7 @@ export default function CadastroLogin() {
             <Toast />
 
             <Formik
-                initialValues={{email: '', senha: '', nome: '', cpf: '', telefone: '', data_nascimento: '', genero: 'masculino', escolaridade:'', zona_residencial:'urbana', estado_civil: 'solteiro', orientacao_sexual: 'heterossexual', problema_mental: false, problema_mental_quais: '', uso_medicamento: false, uso_medicamento_quais: '' }}
+                initialValues={{email: '', senha: '', nome: '', cpf: '', telefone: '', data_nascimento: '', genero: '1', escolaridade:'', zona_residencial:'1', estado_civil: '1', orientacao_sexual: '1', problema_mental: false, problema_mental_quais: '', uso_medicamento: false, uso_medicamento_quais: '' }}
                 validationSchema={Yup.object().shape({
                     email: Yup.string().required('Campo obrigatório').email('O campo precisa ser um email'),
                     senha: Yup.string().required('Campo obrigatório').min(6, 'O campo precisa ter pelo menos 6 caracteres'),
@@ -104,9 +104,9 @@ export default function CadastroLogin() {
                             title="Gênero"
                             selected={values.genero}
                             options={[
-                                {label: 'Masculino', value:'masculino'},
-                                {label: 'Feminino', value:'feminino'},
-                                {label: 'Outro', value:'outros'},]}
+                                {label: 'Masculino', value:'1'},
+                                {label: 'Feminino', value:'2'},
+                                {label: 'Outro', value:'0'},]}
                         />
                         {/* ESCOLARIDADE */}
                         <AppInput 
@@ -119,8 +119,8 @@ export default function CadastroLogin() {
                             title="Zona Residêncial"
                             selected={values.zona_residencial}
                             options={[
-                                {label: 'Urbana', value:'urbana'},
-                                {label: 'Rural', value:'rural'},    
+                                {label: 'Urbana', value:'1'},
+                                {label: 'Rural', value:'2'},    
                             ]}
                         />
                         {/* ESTADO CIVIL */}
@@ -129,12 +129,12 @@ export default function CadastroLogin() {
                             title="Estado Cívil"
                             selected={values.estado_civil}
                             options={[
-                                {label: 'Solteiro', value:'solteiro'},
-                                {label: 'Casado', value:'casado'},    
-                                {label: 'Separado', value:'separado'},    
-                                {label: 'Divorciado', value:'divorciado'},    
-                                {label: 'Viúvo', value:'viuvo'},    
-                                {label: 'Não Informar', value:'nao_informar'},    
+                                {label: 'Solteiro', value:'1'},
+                                {label: 'Casado', value:'2'},    
+                                {label: 'Separado', value:'3'},    
+                                {label: 'Divorciado', value:'4'},    
+                                {label: 'Viúvo', value:'5'},    
+                                {label: 'Não Informar', value:'6'},    
                             ]}
                         />
                         {/* ORIENTAÇÃO SEXUAL */}
@@ -143,11 +143,11 @@ export default function CadastroLogin() {
                             title="Orientação Sexual"
                             selected={values.orientacao_sexual}
                             options={[
-                                {label: 'Heterossexual', value:'heterossexual'},
-                                {label: 'Homossexual', value:'homossexual'},    
-                                {label: 'Bissexual', value:'bissexual'},    
-                                {label: 'Outro', value:'outros'},    
-                                {label: 'Não Informar', value:'nao_informar'}    
+                                {label: 'Heterossexual', value:'1'},
+                                {label: 'Homossexual', value:'2'},    
+                                {label: 'Bissexual', value:'3'},    
+                                {label: 'Outro', value:'4'},    
+                                {label: 'Não Informar', value:'5'}    
                             ]}
                         />
                         {/* PROBLEMA MENTAL */}
