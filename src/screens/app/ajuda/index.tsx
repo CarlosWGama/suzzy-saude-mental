@@ -6,21 +6,32 @@ import { AppSquareButton } from "../../../themes/components/square-button";
 import { AppFont } from "../../../themes/fonts";
 import AppTemplate from "../../../themes/layouts/template";
 import * as Location from 'expo-location';
+import { useAjudaService } from "../../../provider/ajuda.service";
+import { PedidoAjuda } from "../../../models/ajuda.enum";
 
 export default function AjudaScreen() {
 
+
+    const ajudaSrv = useAjudaService();
     // ENTRAR EM CONTATO VIA WHATSAPP COM CVV
     const handleWhatsApp = async () => {
         const whatsappNumero = '+5582991341378' ;
         const mensagem = 'Estou precisando de ajuda';
-
+        ajudaSrv.cadastro(PedidoAjuda.CVV);
         Linking.openURL(`whatsapp://send?phone=${whatsappNumero}&text=${mensagem}`);
     }
 
     // LIGAR PARA SAMU
-    const handleTelefone = async (local:string, tel: string) => {
+    const handleTelefone = async (local:string, tel: string, origem: PedidoAjuda) => {
+        
+        
         Alert.alert(`Ligar ${local}`, `Você deseja realmente ligar para ${local}?`, [
-            {text: 'SIM' },
+            {text: 'SIM', onPress: () => {
+                //Salva uma tentativa de pedir ajuda
+                ajudaSrv.cadastro(origem);
+
+                //Realiza a ligação
+            }},
             {text: 'NÃO, foi engano' },
         ])
     }
@@ -75,9 +86,9 @@ export default function AjudaScreen() {
 
             <ScrollView>
                 <View style={styles.opcoes}>
-                    <AppButton color={AppColors.SECONDARY} title="Hospital" onPress={() => handleTelefone('Hospital', '35201585')} />
-                    <AppButton color={AppColors.SECONDARY} title="Samu" onPress={() => handleTelefone('Samu', '182')} />
-                    <AppButton color={AppColors.SECONDARY} title="Polícia" onPress={() => handleTelefone('Polícia', '190')}  />
+                    <AppButton color={AppColors.SECONDARY} title="Hospital" onPress={() => handleTelefone('Hospital', '35201585', PedidoAjuda.HOSPITAL)} />
+                    <AppButton color={AppColors.SECONDARY} title="Samu" onPress={() => handleTelefone('Samu', '182', PedidoAjuda.SAMU)} />
+                    <AppButton color={AppColors.SECONDARY} title="Polícia" onPress={() => handleTelefone('Polícia', '190', PedidoAjuda.POLICIA)}  />
                 </View>
             </ScrollView>
         </AppTemplate> 
