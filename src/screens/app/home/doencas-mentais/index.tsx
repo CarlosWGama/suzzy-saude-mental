@@ -6,7 +6,7 @@ import { AppColors } from '../../../../themes/colors';
 export interface AppProps {
 }
 
-function TiposTranstornosModal(props: AppProps) {
+function DoencasMentaisModal(props: AppProps) {
 
     const ansiedade = [
         'Medo exagerado',
@@ -51,8 +51,8 @@ function TiposTranstornosModal(props: AppProps) {
     return (
         <View style={styles.container}>
 
-                <Text style={styles.titulo}>TIPOS DE TRANSTORNOS</Text>
-                <Text style={styles.descricao}>Dessa a barra de rolagem para conheça os sintomas de cada transtorno mental</Text>
+            <Text style={styles.titulo}>DOENÇAS MENTAIS</Text>
+            <Text style={styles.descricao}>Desça abaixo e conheça os sinais e sintomas das principais doenças</Text>
                 
             <ScrollView>
                 {/* ANSIEDADE */}
@@ -74,13 +74,15 @@ function TiposTranstornosModal(props: AppProps) {
                     {estress.map((sintoma, index) => <Text key={""+index}  style={styles.textSintoma}>{`\u2022 ${sintoma}`}</Text>)}
                 </View>
 
+
+                <Text style={[styles.descricao, styles.obs]}>Caso tenha se identificado com três ou mais sintomadas, que fique em alerta e procure a unidade mais próxima</Text>
            
             </ScrollView>
         </View>
     )
 }
 
-export default React.memo(TiposTranstornosModal)
+export default React.memo(DoencasMentaisModal)
 
 const styles = StyleSheet.create({
     container: {
@@ -110,5 +112,12 @@ const styles = StyleSheet.create({
         fontFamily: AppFont.LIGHT,
         fontSize: 15
     },
+    obs: {
+        marginVertical: 30,
+        backgroundColor: 'tomato',
+        padding: 10,
+        borderRadius: 10, 
+        color: 'white'
+    }
     
 });

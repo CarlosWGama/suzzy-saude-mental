@@ -1,29 +1,34 @@
 import React, { ReactNode } from 'react';
-import { StyleSheet, Text, View } from "react-native";
-import { AppFont } from '../../../../themes/fonts';
-import { AppColors } from '../../../../themes/colors';
+import { Linking, StyleSheet, Text, View } from "react-native";
+import { AppFont } from '../../../../../themes/fonts';
+import { AppColors } from '../../../../../themes/colors';
+import { AppButton } from '../../../../../themes/components/button';
 
 export interface AppProps {
+    onBack():any;
 }
 
-function CVVModal(props: AppProps) {
+function CAVIDAModal({onBack}: AppProps) {
 
     const textos = [
         "Realiza apoio emocional e prevenção do suicídio",
         "Atendimentos voluntários",
         "Apoio de pessoas que querem e precisam conversar",
-        "Total sigílo de suas informações e identidade",
+        "Total sigilo de suas informações e identidade",
         "Suporte 24 horas por dia",
         "Atendimento pelo telefone 188"
     ]
 
+    const handleOpenSite = React.useCallback(() => {
+        Linking.openURL(`http://www.cavida.org/`);
+    }, []);
 
 
 
     return (
         <View style={styles.container}>
-            <Text style={styles.titulo}>CVV</Text>
-            <Text style={styles.descricao}>Conheça o que CVV (Centro de Valorização da Vida) oferece a você:</Text>
+            <Text style={styles.titulo}>CAVIDA</Text>
+            <Text style={styles.descricao}>Conheça o que CAVIDA oferece a você:</Text>
 
             <View style={styles.cards}>
                 { textos.map((texto, index) => (
@@ -32,11 +37,15 @@ function CVVModal(props: AppProps) {
                     </View>
                 ))}
             </View>
+
+            <AppButton title='Clique aqui apra acessar o site' color={AppColors.SECONDARY} onPress={handleOpenSite} />
+            <AppButton title='Voltar' color={AppColors.TERTIARY} onPress={onBack} />
+                
         </View>
     )
 }
 
-export default React.memo(CVVModal)
+export default React.memo(CAVIDAModal)
 
 const styles = StyleSheet.create({
     container: {

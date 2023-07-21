@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Formik } from "formik";
 import { Alert, StyleSheet, Text, View } from "react-native";
 import { AppColors } from "../../../../themes/colors";
-import { AppButton } from "../../../../themes/components";
+import { AppButton, AppSelect } from "../../../../themes/components";
 import { AppFont } from "../../../../themes/fonts";
 import AppTemplate from "../../../../themes/layouts/template";
 import * as Yup from 'yup';
@@ -79,7 +79,7 @@ export default function AlterarContatoScreen() {
         {/* MODAL */}
         <Modalize ref={modal} childrenStyle={{padding: 20}} modalTopOffset={100}>
             <Formik
-                initialValues={{nome: '', telefone: ''}}
+                initialValues={{nome: '', telefone: '', relacionamento:'1'}}
                 onSubmit={handleCadastrar}
                 validationSchema={Yup.object({
                     nome: Yup.string().required('Campo obrigatório'),
@@ -88,8 +88,21 @@ export default function AlterarContatoScreen() {
             >
                 {({handleChange, values, handleSubmit, errors, handleBlur, touched, isSubmitting}) => (
                     <>
-                        <AppInput placeholder="Digite o nome do seu contato" title="Nome contato" onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} error={errors.nome} touched={touched.nome} />
-                        <AppInput mask={Masks.BRL_PHONE} value={values.telefone} placeholder="Digite o telefone" title="Número do telefone" onChangeText={handleChange('telefone')} onBlur={handleBlur('telefone')} error={errors.telefone} touched={touched.telefone} />
+                        <AppInput placeholder="Digite o nome do seu contato" title="Nome contato de referência" onChangeText={handleChange('nome')} onBlur={handleBlur('nome')} error={errors.nome} touched={touched.nome} />
+                        <AppInput mask={Masks.BRL_PHONE} value={values.telefone} placeholder="Digite o telefone com DDD" title="Número do telefone com DDDe" onChangeText={handleChange('telefone')} onBlur={handleBlur('telefone')} error={errors.telefone} touched={touched.telefone} />
+                        <AppSelect 
+                            onChange={handleChange('relacionamento')}
+                            title="Grau de Referência"
+                            selected={values.relacionamento}
+                            options={[
+                                {label: 'Pai', value:'1'},
+                                {label: 'Mãe', value:'2'},
+                                {label: 'Irmã(o)', value:'3'},
+                                {label: 'Amigo(a)', value:'4'},
+                                {label: 'Parente', value:'5'},
+                                {label: 'Outro', value:'6'},
+                            ]}
+                        />
                         <AppButton title="Adicionar"  color={AppColors.TERTIARY} onPress={handleSubmit} carregando={isSubmitting}  />
                     </>
                 )}

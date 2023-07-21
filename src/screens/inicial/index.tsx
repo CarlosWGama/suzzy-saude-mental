@@ -21,10 +21,10 @@ export default function InicialScreen() {
     const navigation = useNavigation<NativeStackNavigationProp<NavParamsRoot, "inicial">>();
     
     const dados: IntroSlide[] = [
-        {titulo: 'Bem vindo!', descricao: `Seja muito bem vindo ao ${AppConfig.nome}, nós estamos aqui para te ajudar!`, imagem: ImgPersonagem1, cor:'#a8e6cf'},
+        {titulo: 'Bem vindo(a)!', descricao: `Seja muito bem vindo(a) ao ${AppConfig.nome}, nós estamos aqui para te ajudar!`, imagem: ImgPersonagem1, cor:'#a8e6cf'},
         {titulo: AppConfig.nome, descricao: `O ${AppConfig.nome} é um aplicativo voltado a saude mental, onde vamos aos poucos te ajudando a saber se possui algum problema que precise de apoio`, imagem: ImgPersonagem3, cor:'#dcedc1'},
         {titulo: 'Suporte 24h', descricao: `Aqui você também terá suporte 24h da nossa equipe, além de botões de acesso rápido a setores de apoio`, imagem: ImgPersonagem5, cor:'#ffd3b6'},
-        {titulo: 'Seu acesso', descricao: `Queremos que seja muito bem vindo! Então vamos começar!`, imagem: ImgPersonagem4, cor:'#ffaaa5', fim:true}
+        {titulo: 'Seu acesso', descricao: `Para te ajudar melhor, faça seu cadastro ou se tiver em situação emergencial, poderá acessar sem logar`, imagem: ImgPersonagem4, cor:'#ffaaa5', fim:true}
     ]
     
     return (
@@ -60,6 +60,6 @@ export default function InicialScreen() {
 const styles = StyleSheet.create({
     img: { height: 350, resizeMode: 'contain'},
     titulo: { fontFamily: AppFont.NEGRITO, fontSize: 20},
-    descricao: { fontFamily: AppFont.PADRAO, fontSize: 17, textAlign: 'center'},
+    descricao: { fontFamily: AppFont.PADRAO, fontSize: 25, textAlign: 'center', marginTop: -50, marginBottom: 30},
     buttons: { flexDirection: 'row'}
 });

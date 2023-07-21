@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+import { ActivityIndicator, Image, StyleSheet, Text, TextInput, View } from "react-native";
 import { ImgPersonagem7, ImgPersonagem8, ImgPersonagem9 } from "../../assets/personagens";
 import { AppColors } from "../../themes/colors";
 import { AppButton, AppInput } from "../../themes/components";
@@ -35,7 +35,7 @@ export default function LoginScreen() {
     return (
         <View style={styles.container}>
             {/* HEADER */}
-            <Text style={styles.title}>Realize o seu login</Text>
+            <Text style={styles.title}>Realize o seu acesso</Text>
             <Image source={ImgPersonagem7} style={styles.img}/>
             <Toast />
             
@@ -60,8 +60,8 @@ export default function LoginScreen() {
                         onChangeText={handleChange("senha")}/>
                 
 
-                    <AppButton title="LOGAR" onPress={handleSubmit} />
-                    <AppButton title="NÃO POSSUI CONTA? CLIQUE AQUI"  outline onPress={() => nav.push("cadastro")} />
+                    <AppButton title="ACESSAR" onPress={handleSubmit} carregando={isSubmitting} />
+                    <AppButton title="NÃO POSSUI CONTA? CLIQUE AQUI!"  outline onPress={() => nav.push("cadastro")} />
                     <AppButton title="ACESSAR SEM CONTA" color={AppColors.SECONDARY}  outline onPress={() => nav.reset({index: 0, routes: [{name:'app'}]})} />
                 </View>)}
             </Formik>

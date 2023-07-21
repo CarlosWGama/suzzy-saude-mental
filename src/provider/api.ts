@@ -9,6 +9,7 @@ const api = axios.create({
 
 api.interceptors.request.use(async (config:any) => {
       const token = await AsyncStorage.getItem('jwt');
+
       if (token)
         config.headers = {'Authorization': `Bearer ${token}`}
       return config

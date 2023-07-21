@@ -41,7 +41,7 @@ export default function AlterarDadosScreen() {
 
     return (
     <AppTemplate smallHeader backButton titulo="Alterar Dados" background="abstract2" color={AppColors.TERTIARY}>
-        <Text style={styles.text}>Altere seus dadods</Text>
+        <Text style={styles.text}>Altere seus dados</Text>
  
         <Formik
                 initialValues={usuario}
@@ -70,7 +70,7 @@ export default function AlterarDadosScreen() {
                             onChangeText={handleChange("senha")}/>
                         {/* TELEFONE */}
                         <AppInput 
-                            title="Telefone para contato" placeholder="Digite seu telefone"  error={errors.telefone} touched={touched.telefone}
+                            title="Telefone para contato com DDD" placeholder="Digite seu telefone"  error={errors.telefone} touched={touched.telefone}
                             onBlur={handleBlur("telefone")}
                             keyboardType="decimal-pad"
                             value={values.telefone}

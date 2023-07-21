@@ -59,7 +59,7 @@ export default function CadastroLogin() {
                     <ScrollView contentContainerStyle={{padding:50}}>
                         {/* NOME */}
                         <AppInput 
-                            title="Nome" placeholder="Digite seu nome"  error={errors.nome} touched={touched.nome}
+                            title="Nome completo" placeholder="Digite seu nome"  error={errors.nome} touched={touched.nome}
                             onBlur={handleBlur("nome")}
                             onChangeText={handleChange("nome")}/>
                         {/* EMAIL */}
@@ -76,7 +76,7 @@ export default function CadastroLogin() {
                             onChangeText={handleChange("senha")}/>
                         {/* TELEFONE */}
                         <AppInput 
-                            title="Telefone para contato" placeholder="Digite seu telefone"  error={errors.telefone} touched={touched.telefone}
+                            title="Telefone para contato com DDD" placeholder="Digite seu telefone"  error={errors.telefone} touched={touched.telefone}
                             onBlur={handleBlur("telefone")}
                             keyboardType="decimal-pad"
                             value={values.telefone}

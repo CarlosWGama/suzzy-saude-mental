@@ -9,8 +9,9 @@ import { AppButton } from "../../../themes/components/button";
 import { AppFont } from "../../../themes/fonts";
 import AppTemplate from "../../../themes/layouts/template";
 import SobreAppModal from "./app";
-import CVVModal from "./cvv";
-import TiposTranstornosModal from "./tipos-transtornos";
+import SuporteEmocionalModal from "./suporte-emocional";
+import ApoioEmergencialModal from "./apoio-emergencial";
+import DoencasMentaisModal from "./doencas-mentais";
 
 export default function HomeScreen() {
 
@@ -46,8 +47,8 @@ export default function HomeScreen() {
                     <Image source={ImgPersonagem9} style={{height:150, width: 100, resizeMode: 'contain'}}/>
                     
                     <Text style={styles.cardText}>
-                        Seja bem vindo {usuario?.nome}! {"\n\n"}
-                        Nessa seção do aplicativo você poderá conhecer um pouco sobre os cuidados e apoios que você pode encontrar em relação a sua saúde mental
+                        Seja bem vindo(a) {usuario?.nome}! {"\n\n"}
+                        Nessa seção do aplicativo você poderá conhecer um pouco sobre os cuidados e apoios que você pode encontrar em relação a sua saúde mental.
                     </Text>
                 </View>
             </AppCard>
@@ -56,11 +57,11 @@ export default function HomeScreen() {
             <Text style={styles.informacoes}>INFORMAÇÕES</Text>
 
             <View style={styles.opcoes}>
-                <AppSquareButton title={"Tipos de \nTranstornos"} textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<TiposTranstornosModal/>)} />
-                { usuario && <AppSquareButton title="Registros Diários"  onPress={() => handleOpenModal(<CVVModal/>)} />}
-                <AppSquareButton title="CVV"  onPress={() => handleOpenModal(<CVVModal/>)} />
-                <AppSquareButton title="Dicas" onPress={() => handleOpenModal(<SobreAppModal/>)} />
-                <AppSquareButton title="TermoMental" textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<CVVModal/>)}/>
+                <AppSquareButton title={"Doenças \nMentais"} textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<DoencasMentaisModal/>)} />
+                { usuario && <AppSquareButton title="Registros Diários"  onPress={() => handleOpenModal(<ApoioEmergencialModal/>)} />}
+                <AppSquareButton title={"Apoio \nEmergencial"} textStyle={{fontSize: 12}}   onPress={() => handleOpenModal(<ApoioEmergencialModal/>)} />
+                { usuario && <AppSquareButton title="Suporte Emocional" onPress={() => handleOpenModal(<SuporteEmocionalModal/>)} />}
+                <AppSquareButton title="TermoMental" textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<ApoioEmergencialModal/>)}/>
             </View>
         </AppTemplate> 
     )

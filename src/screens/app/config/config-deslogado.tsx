@@ -14,9 +14,9 @@ export default function ConfigDeslogadoScreen() {
 
     return (
     <AppTemplate titulo="Configuração" background="abstract2" color={AppColors.TERTIARY}>
-        <Text style={styles.text}>Você não está logado. {"\n"}Para acessar suas configurações, logue no aplicativo :)</Text>
+        <Text style={styles.text}>Você não está conectado. {"\n\n"}Nessa sessão de aplicativo, você terá acesso aos contatos emergências e anotações importantes.</Text>
 
-        <AppButton title="LOGAR"  color={AppColors.TERTIARY}
+        <AppButton title="LOGIN"  color={AppColors.TERTIARY}
             onPress={() => nav.reset({index: 0, routes: [{name:'login'}]})}
         />
     </AppTemplate>

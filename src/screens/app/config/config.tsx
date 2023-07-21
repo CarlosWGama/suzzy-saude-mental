@@ -28,9 +28,9 @@ export default function ConfigScreen() {
     <AppTemplate smallHeader titulo="Configuração" background="abstract2" color={AppColors.TERTIARY}>
         <Text style={styles.text}>Opções</Text>
 
-        <AppButton title="DESLOGAR"  color={AppColors.TERTIARY} onPress={handleDeslogar} />
+        <AppButton title="SAIR"  color={AppColors.TERTIARY} onPress={handleDeslogar} />
         <AppButton title="ALTERAR DADOS"  outline color={AppColors.TERTIARY} onPress={() => nav.push('alterar_dados')} />
-        <AppButton title="ALTERAR CONTATO DE CONFIANÇA" outline color={AppColors.TERTIARY} onPress={() => nav.push('alterar_contato')} />
+        <AppButton title="ALTERAR CONTATO DE REFERÊNCIA PESSOAL" outline color={AppColors.TERTIARY} onPress={() => nav.push('alterar_contato')} />
     </AppTemplate>
     )
 }

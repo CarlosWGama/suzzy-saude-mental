@@ -8,16 +8,17 @@ import AppTemplate from "../../../themes/layouts/template";
 import * as Location from 'expo-location';
 import { useAjudaService } from "../../../provider/ajuda.service";
 import { PedidoAjuda } from "../../../models/ajuda.enum";
+import { AppConfig } from "../../../config/app";
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function AjudaScreen() {
 
 
     const ajudaSrv = useAjudaService();
     // ENTRAR EM CONTATO VIA WHATSAPP COM CVV
-    const handleWhatsApp = async () => {
-        const whatsappNumero = '+5582991341378' ;
+    const handleWhatsApp = async (whatsappNumero: string, origemPedido:PedidoAjuda) => {
         const mensagem = 'Estou precisando de ajuda';
-        ajudaSrv.cadastro(PedidoAjuda.CVV);
+        ajudaSrv.cadastro(origemPedido);
         Linking.openURL(`whatsapp://send?phone=${whatsappNumero}&text=${mensagem}`);
     }
 
@@ -58,7 +59,7 @@ export default function AjudaScreen() {
 
 
     return (
-        <AppTemplate titulo="Ajuda" background="abstract" color={AppColors.SECONDARY}>
+        <AppTemplate titulo="Ajuda" background="abstract" color={AppColors.SECONDARY} icon={<MaterialIcons name="local-hospital" color="white" size={30}/>}>
             {/* HEADER */}
             <AppCard style={{marginTop: -100}}>
                 <View style={styles.card}>
@@ -66,8 +67,8 @@ export default function AjudaScreen() {
                     
                     <Text style={styles.cardText}>
                         Ajuda rápida! {"\n\n"}
-                        Caso precise de uma ajuda rápida, pode encontrar aqui!
-                        Pode falar a qualquer momento com a equipe do CVV ou enviar sua localização atual a seus conhecidos pedindo ajuda
+                        Caso precise de uma ajuda rápida, você pode encontrar aqui!
+                        Pode falar a qualquer momento com a equipe de apoio. Em caso de urgência em atendimento durante as crises, clicar no botão de enviar sua localização, além das opções de ligar.
                     </Text>
                 </View>
             </AppCard>
@@ -77,14 +78,15 @@ export default function AjudaScreen() {
 
             <ScrollView>
                 <View style={styles.opcoes}>
-                    <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do CVV" onPress={handleWhatsApp} />
+                    <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do CVV" onPress={() => handleWhatsApp(AppConfig.whatsapp.CVV, PedidoAjuda.CVV)} />
+                    <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do CAVIDA" onPress={() => handleWhatsApp(AppConfig.whatsapp.CAVIDA, PedidoAjuda.CAVIDA)} />
+                    <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do Secretaria" onPress={() => handleWhatsApp(AppConfig.whatsapp.SMS, PedidoAjuda.SMS)} />
                     {/* <AppSquareButton color={AppColors.SECONDARY} title="Ligar Samu" onPress={handleSamu} /> */}
                     <AppSquareButton color={AppColors.SECONDARY} title="Enviar minha localização" onPress={handleLocalizacao}  />
                 </View>
-            </ScrollView>
-            <Text style={styles.informacoes}>Ligar para</Text>
+           
+                <Text style={[styles.informacoes, {marginTop:-10}]}>Outros contatos</Text>
 
-            <ScrollView>
                 <View style={styles.opcoes}>
                     <AppButton color={AppColors.SECONDARY} title="Hospital" onPress={() => handleTelefone('Hospital', '35201585', PedidoAjuda.HOSPITAL)} />
                     <AppButton color={AppColors.SECONDARY} title="Samu" onPress={() => handleTelefone('Samu', '182', PedidoAjuda.SAMU)} />

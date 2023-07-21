@@ -8,6 +8,7 @@ import { AppFont } from "../fonts";
 export interface AppTemplate {
     children: ReactNode,
     titulo: string,
+    icon?: ReactNode,
     backButton?: boolean
     background?: 'wave'|'abstract'|'abstract2',
     color?: string,
@@ -17,7 +18,7 @@ export interface AppTemplate {
 }
 
 
-export default function AppTemplate({backButton, children, titulo, background, color, fullComponent, smallHeader}:AppTemplate) {
+export default function AppTemplate({backButton, children, titulo, background, color, fullComponent, smallHeader, icon}:AppTemplate) {
 
     const getBG = () => {
         if (background == 'abstract') return require('./../../assets/efeitos/abstract.png')
@@ -32,10 +33,13 @@ export default function AppTemplate({backButton, children, titulo, background, c
 
                 {/* HEADER */}
                 <View style={[styles.header, {height: smallHeader ? 75 : 150}]}>
-                    <>
+                    <View style={{flex:1}}>
                         {backButton && <AppBackButton color="white" />}<Text></Text>
+                    </View>
+                    <>
+                        <Text style={styles.title}>{titulo}</Text>
+                        { icon }
                     </>
-                    <Text style={styles.title}>{titulo}</Text>
                 </View>
 
                 {/* MAIN */}
