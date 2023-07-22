@@ -12,6 +12,7 @@ import SobreAppModal from "./app";
 import SuporteEmocionalModal from "./suporte-emocional";
 import ApoioEmergencialModal from "./apoio-emergencial";
 import DoencasMentaisModal from "./doencas-mentais";
+import TermoMentalModal from "./termomental";
 
 export default function HomeScreen() {
 
@@ -61,7 +62,7 @@ export default function HomeScreen() {
                 { usuario && <AppSquareButton title="Registros Diários"  onPress={() => handleOpenModal(<ApoioEmergencialModal/>)} />}
                 <AppSquareButton title={"Apoio \nEmergencial"} textStyle={{fontSize: 12}}   onPress={() => handleOpenModal(<ApoioEmergencialModal/>)} />
                 { usuario && <AppSquareButton title="Suporte Emocional" onPress={() => handleOpenModal(<SuporteEmocionalModal/>)} />}
-                <AppSquareButton title="TermoMental" textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<ApoioEmergencialModal/>)}/>
+                <AppSquareButton title="TermoMental" textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<TermoMentalModal/>)}/>
             </View>
         </AppTemplate> 
     )
