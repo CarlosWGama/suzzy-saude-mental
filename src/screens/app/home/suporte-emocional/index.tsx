@@ -3,6 +3,7 @@ import { Linking, StyleSheet, Text, View } from "react-native";
 import { AppFont } from '../../../../themes/fonts';
 import { AppColors } from '../../../../themes/colors';
 import { AppSquareButton } from '../../../../themes/components';
+import MeditacaoModal from './meditacao';
 
 export interface AppProps {
 }
@@ -27,7 +28,7 @@ function SuporteEmocionalModal(props: AppProps) {
                 </View>    
             </View>}
             {/* TELAS */}
-            {tela == 'meditacao' && <Text>Sem item ainda</Text>}
+            {tela == 'meditacao' && <MeditacaoModal onBack={() => setTela('inicial')}/>}
             {tela == 'respiracao' && <Text>Sem item ainda</Text>}
             {tela == 'acupuntura' && <Text>Sem item ainda</Text>}
             {tela == 'frases' && <Text>Sem item ainda</Text>}

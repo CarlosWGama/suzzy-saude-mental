@@ -60,6 +60,6 @@ export default function InicialScreen() {
 const styles = StyleSheet.create({
     img: { height: 350, resizeMode: 'contain'},
     titulo: { fontFamily: AppFont.NEGRITO, fontSize: 20},
-    descricao: { fontFamily: AppFont.PADRAO, fontSize: 25, textAlign: 'center', marginTop: -50, marginBottom: 30},
+    descricao: { fontFamily: AppFont.PADRAO, fontSize: 20, textAlign: 'center', marginTop: -30, marginBottom: 30},
     buttons: { flexDirection: 'row'}
 });
