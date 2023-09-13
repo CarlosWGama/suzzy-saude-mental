@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import { useEffect, useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { KeyboardAvoidingView, ScrollView, StyleSheet, Text, View, Platform } from "react-native";
 import { AppColors } from "../../../../themes/colors";
 import { AppButton, AppCheck, AppSelect } from "../../../../themes/components";
 import { AppFont } from "../../../../themes/fonts";
@@ -55,6 +55,7 @@ export default function AlterarDadosScreen() {
                 onSubmit={handleAtualizar}
             >
                 {({ values, handleChange, handleBlur, errors, touched, setFieldValue, handleSubmit, isSubmitting }) => (<View>
+                    <KeyboardAvoidingView behavior="position">
                     <ScrollView contentContainerStyle={{paddingBottom:100, paddingHorizontal: 20}}>
                         {/* NOME */}
                         <AppInput 
@@ -174,10 +175,10 @@ export default function AlterarDadosScreen() {
 
                         <AppButton title="Atualizar" color={AppColors.TERTIARY} onPress={handleSubmit} />
                     </ScrollView>
+                </KeyboardAvoidingView>
                 </View>)}
             </Formik>
             <Toast />
-
 
     </AppTemplate>
     )

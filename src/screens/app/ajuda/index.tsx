@@ -59,41 +59,43 @@ export default function AjudaScreen() {
 
 
     return (
-        <AppTemplate titulo="Ajuda" background="abstract" color={AppColors.SECONDARY} icon={<MaterialIcons name="local-hospital" color="white" size={30}/>}>
-            {/* HEADER */}
-            <AppCard style={{marginTop: -100}}>
-                <View style={styles.card}>
-                    <Image source={ImgPersonagem1} style={{height:150, width: 100, resizeMode: 'contain'}}/>
-                    
-                    <Text style={styles.cardText}>
-                        Ajuda rápida! {"\n\n"}
-                        Caso precise de uma ajuda rápida, você pode encontrar aqui!
-                        Pode falar a qualquer momento com a equipe de apoio. Em caso de urgência em atendimento durante as crises, clicar no botão de enviar sua localização, além das opções de ligar.
-                    </Text>
-                </View>
-            </AppCard>
+        <ScrollView>
+            <AppTemplate titulo="Ajuda" background="abstract" color={AppColors.SECONDARY} icon={<MaterialIcons name="local-hospital" color="white" size={30}/>}>
+                {/* HEADER */}
+                <AppCard style={{marginTop: -100}}>
+                    <View style={styles.card}>
+                        <Image source={ImgPersonagem1} style={{height:150, width: 100, resizeMode: 'contain'}}/>
+                        
+                        <Text style={styles.cardText}>
+                            Ajuda rápida! {"\n\n"}
+                            Caso precise de uma ajuda rápida, você pode encontrar aqui!
+                            Pode falar a qualquer momento com a equipe de apoio. Em caso de urgência em atendimento durante as crises, clicar no botão de enviar sua localização, além das opções de ligar.
+                        </Text>
+                    </View>
+                </AppCard>
 
-            {/* OPÇÕES */}
-            <Text style={styles.informacoes}>Busque seu apoio</Text>
+                {/* OPÇÕES */}
+                <Text style={styles.informacoes}>Busque seu apoio</Text>
 
-            <ScrollView>
-                <View style={styles.opcoes}>
-                    <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do CVV" onPress={() => handleWhatsApp(AppConfig.whatsapp.CVV, PedidoAjuda.CVV)} />
-                    <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do CAVIDA" onPress={() => handleWhatsApp(AppConfig.whatsapp.CAVIDA, PedidoAjuda.CAVIDA)} />
-                    <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do Secretaria" onPress={() => handleWhatsApp(AppConfig.whatsapp.SMS, PedidoAjuda.SMS)} />
-                    {/* <AppSquareButton color={AppColors.SECONDARY} title="Ligar Samu" onPress={handleSamu} /> */}
-                    <AppSquareButton color={AppColors.SECONDARY} title="Enviar minha localização" onPress={handleLocalizacao}  />
-                </View>
-           
-                <Text style={[styles.informacoes, {marginTop:-10}]}>Outros contatos</Text>
+                <ScrollView>
+                    <View style={styles.opcoes}>
+                        <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do CVV" onPress={() => handleWhatsApp(AppConfig.whatsapp.CVV, PedidoAjuda.CVV)} />
+                        <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do CAVIDA" onPress={() => handleWhatsApp(AppConfig.whatsapp.CAVIDA, PedidoAjuda.CAVIDA)} />
+                        <AppSquareButton color={AppColors.SECONDARY} title="WhatsApp do Secretaria" onPress={() => handleWhatsApp(AppConfig.whatsapp.SMS, PedidoAjuda.SMS)} />
+                        {/* <AppSquareButton color={AppColors.SECONDARY} title="Ligar Samu" onPress={handleSamu} /> */}
+                        <AppSquareButton color={AppColors.SECONDARY} title="Enviar minha localização" onPress={handleLocalizacao}  />
+                    </View>
+            
+                    <Text style={[styles.informacoes, {marginTop:-10}]}>Outros contatos</Text>
 
-                <View style={styles.opcoes}>
-                    <AppButton color={AppColors.SECONDARY} title="Hospital" onPress={() => handleTelefone('Hospital', '35201585', PedidoAjuda.HOSPITAL)} />
-                    <AppButton color={AppColors.SECONDARY} title="Samu" onPress={() => handleTelefone('Samu', '182', PedidoAjuda.SAMU)} />
-                    <AppButton color={AppColors.SECONDARY} title="Polícia" onPress={() => handleTelefone('Polícia', '190', PedidoAjuda.POLICIA)}  />
-                </View>
-            </ScrollView>
-        </AppTemplate> 
+                    <View style={styles.opcoes}>
+                        <AppButton color={AppColors.SECONDARY} title="Hospital" onPress={() => handleTelefone('Hospital', '35201585', PedidoAjuda.HOSPITAL)} />
+                        <AppButton color={AppColors.SECONDARY} title="Samu" onPress={() => handleTelefone('Samu', '182', PedidoAjuda.SAMU)} />
+                        <AppButton color={AppColors.SECONDARY} title="Polícia" onPress={() => handleTelefone('Polícia', '190', PedidoAjuda.POLICIA)}  />
+                    </View>
+                </ScrollView>
+            </AppTemplate> 
+        </ScrollView>
     )
 }
 

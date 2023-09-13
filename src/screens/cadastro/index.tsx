@@ -1,5 +1,5 @@
 import { Formik } from "formik";
-import { Image, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { Image, KeyboardAvoidingView, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { ImgPersonagem7, ImgPersonagem8, ImgPersonagem9 } from "../../assets/personagens";
 import { AppColors } from "../../themes/colors";
 import { AppBackButton, AppButton, AppInput } from "../../themes/components";
@@ -56,6 +56,8 @@ export default function CadastroLogin() {
                 onSubmit={handleCadastro}
             >
                 {({ values, handleChange, handleBlur, errors, touched, setFieldValue, handleSubmit, isSubmitting }) => (<View style={styles.loginContainer}>
+                    <KeyboardAvoidingView behavior="position">
+
                     <ScrollView contentContainerStyle={{padding:50}}>
                         {/* NOME */}
                         <AppInput 
@@ -176,6 +178,7 @@ export default function CadastroLogin() {
 
                         <AppButton title="CADASTRAR" color={AppColors.SUCCESS} onPress={handleSubmit} />
                     </ScrollView>
+                    </KeyboardAvoidingView>
                 </View>)}
             </Formik>
         </View>

@@ -27,44 +27,45 @@ export default function HomeScreen() {
     }   
     //=======================================================================================
     return (
-        <AppTemplate titulo="Informações"
-        
-            fullComponent={
-            <Modalize 
-                adjustToContentHeight
-                modalTopOffset={80}
-                modalStyle={{flex: 1}}
-                disableScrollIfPossible={false}
-                ref={modal}
-                HeaderComponent={<AppButton title="FECHAR" color={AppColors.DANGER} onPress={() => modal.current?.close()}/>}    
-            >
-                {itemModal}
-            </Modalize>}
-        >
-            
-            {/* HEADER */}
-            <AppCard style={{marginTop: -100}}>
-                <View style={styles.card}>
-                    <Image source={ImgPersonagem9} style={{height:150, width: 100, resizeMode: 'contain'}}/>
-                    
-                    <Text style={styles.cardText}>
-                        Seja bem vindo(a) {usuario?.nome}! {"\n\n"}
-                        Nessa seção do aplicativo você poderá conhecer um pouco sobre os cuidados e apoios que você pode encontrar em relação a sua saúde mental.
-                    </Text>
-                </View>
-            </AppCard>
+        <ScrollView>
+                <AppTemplate titulo="Informações"
+                
+                    fullComponent={
+                    <Modalize 
+                        adjustToContentHeight
+                        modalTopOffset={80}
+                        modalStyle={{flex: 1}}
+                        disableScrollIfPossible={false}
+                        ref={modal}
+                        HeaderComponent={<AppButton title="FECHAR" color={AppColors.DANGER} onPress={() => modal.current?.close()}/>}    
+                    >
+                        {itemModal}
+                    </Modalize>}
+                >
+                        {/* HEADER */}
+                        <AppCard style={{marginTop: -100}}>
+                            <View style={styles.card}>
+                                <Image source={ImgPersonagem9} style={{height:150, width: 100, resizeMode: 'contain'}}/>
+                                
+                                <Text style={styles.cardText}>
+                                    Seja bem vindo(a) {usuario?.nome}! {"\n\n"}
+                                    Nessa seção do aplicativo você poderá conhecer um pouco sobre os cuidados e apoios que você pode encontrar em relação a sua saúde mental.
+                                </Text>
+                            </View>
+                        </AppCard>
 
-            {/* OPÇÕES */}
-            <Text style={styles.informacoes}>INFORMAÇÕES</Text>
+                        {/* OPÇÕES */}
+                        <Text style={styles.informacoes}>INFORMAÇÕES</Text>
 
-            <View style={styles.opcoes}>
-                <AppSquareButton title={"Doenças \nMentais"} textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<DoencasMentaisModal/>)} />
-                { usuario && <AppSquareButton title="Registros Diários"  onPress={() => handleOpenModal(<ApoioEmergencialModal/>)} />}
-                <AppSquareButton title={"Apoio \nEmergencial"} textStyle={{fontSize: 12}}   onPress={() => handleOpenModal(<ApoioEmergencialModal/>)} />
-                { usuario && <AppSquareButton title="Suporte Emocional" onPress={() => handleOpenModal(<SuporteEmocionalModal/>)} />}
-                <AppSquareButton title="TermoMental" textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<TermoMentalModal/>)}/>
-            </View>
-        </AppTemplate> 
+                        <View style={styles.opcoes}>
+                            <AppSquareButton title={"Doenças \nMentais"} textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<DoencasMentaisModal/>)} />
+                            { usuario && <AppSquareButton title="Registros Diários"  onPress={() => handleOpenModal(<ApoioEmergencialModal/>)} />}
+                            <AppSquareButton title={"Apoio \nEmergencial"} textStyle={{fontSize: 12}}   onPress={() => handleOpenModal(<ApoioEmergencialModal/>)} />
+                            { usuario && <AppSquareButton title="Suporte Emocional" onPress={() => handleOpenModal(<SuporteEmocionalModal/>)} />}
+                            <AppSquareButton title="TermoMental" textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<TermoMentalModal/>)}/>
+                        </View>
+                </AppTemplate> 
+            </ScrollView>
     )
 }
 
