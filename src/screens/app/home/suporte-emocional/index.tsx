@@ -4,6 +4,7 @@ import { AppFont } from '../../../../themes/fonts';
 import { AppColors } from '../../../../themes/colors';
 import { AppSquareButton } from '../../../../themes/components';
 import MeditacaoModal from './meditacao';
+import FrasesMotivacionaisModal from './frases-motivacionais';
 
 export interface AppProps {
 }
@@ -31,7 +32,7 @@ function SuporteEmocionalModal(props: AppProps) {
             {tela == 'meditacao' && <MeditacaoModal onBack={() => setTela('inicial')}/>}
             {tela == 'respiracao' && <Text>Sem item ainda</Text>}
             {tela == 'acupuntura' && <Text>Sem item ainda</Text>}
-            {tela == 'frases' && <Text>Sem item ainda</Text>}
+            {tela == 'frases' && <FrasesMotivacionaisModal onBack={() => setTela('inicial')}/>}
 
         </>
     )
