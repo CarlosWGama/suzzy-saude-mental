@@ -18,8 +18,11 @@ function MeditacaoModal({onBack}: ModalProps) {
 
     // ================================================
     const audios: MeditacaoAudio[] = [
+        {number: 1, title: "LIMPEZA DOS \nPENSAMENTOS NEGATIVOS", audio: require('./audios/meditacao1.mp3') },
         {number: 2, title: 'LIBERAR A ANSIEDADE', audio: require('./audios/meditacao2.mp3') },
         {number: 3, title: 'TRANQUILIZAR A MENTE', audio: require('./audios/meditacao3.mp3') },
+        {number: 4, title: 'A FORÇA DA VIDA', audio: require('./audios/meditacao4.mp3') },
+        {number: 5, title: 'AS 4 ESTAÇÕES', audio: require('./audios/meditacao5.mp3') },
     ]
     // ==========
     const playHandle = async (number:number) => {
