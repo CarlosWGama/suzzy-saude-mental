@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ImageBackground, Dimensions } from "react-native";
 import { ReactNode } from 'react'
 import { AppBackButton } from "../components/back-button";
 import { AppColors } from "../colors";
@@ -27,7 +27,7 @@ export default function AppTemplate({backButton, children, titulo, background, c
     }
 
     return (
-        <View style={[styles.container, {backgroundColor: color}]}>
+        <View style={[styles.container, {backgroundColor: color, height: Dimensions.get("window").height}]}>
             <ImageBackground style={{width: '100%', height: '100%', paddingTop: 30}} source={getBG()}>
                 <StatusBar style="light" />
 
