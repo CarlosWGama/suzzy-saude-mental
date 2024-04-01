@@ -23,8 +23,6 @@ function SuporteEmocionalModal(props: AppProps) {
 
                 <View style={styles.cards}>
                     <AppSquareButton title='Meditações guiadas' textStyle={{fontSize: 12}} color={AppColors.SECONDARY} onPress={() => setTela('meditacao')}/>
-                    <AppSquareButton title='Respiração Diafragmática' textStyle={{fontSize: 12}} color={AppColors.SECONDARY} onPress={() => setTela('respiracao')}/>
-                    <AppSquareButton title='Vídeos de acupuntura' textStyle={{fontSize: 12}} color={AppColors.SECONDARY} onPress={() => setTela('acupuntura')}/>
                     <AppSquareButton title='Frases Motivacionais' textStyle={{fontSize: 12}}  color={AppColors.SECONDARY} onPress={() => setTela('frases')}/>
                 </View>    
             </View>}
