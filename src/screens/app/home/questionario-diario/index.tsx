@@ -8,7 +8,7 @@ import { PlantaRegada, useQuestionarioDiarioService } from '../../../../provider
 function QuestionarioDiarioModal(props: any) {
 
     const [ repondido, setRespondido ] = React.useState(false);
-    const [ planta, setPlanta ] = React.useState<PlantaRegada>({dias_aguado: 0});
+    const [ planta, setPlanta ] = React.useState<PlantaRegada>({dias_totais_aguados: 0, dias_seguidos: 0});
     const questionarioSrv = useQuestionarioDiarioService();
     // ===================================================================================
     const onResponder = React.useCallback((planta: PlantaRegada) => {
@@ -36,7 +36,7 @@ function QuestionarioDiarioModal(props: any) {
         <View style={styles.container}>
             <Text style={styles.titulo}>Registro Diário - {moment().format('DD/MM/YYYY')}</Text>
             { !repondido && <Questionario onResponder={onResponder}/>}
-            { repondido && <Planta pontos={planta.dias_aguado}/>}
+            { repondido && <Planta planta={planta}/>}
         </View>
     )
 }

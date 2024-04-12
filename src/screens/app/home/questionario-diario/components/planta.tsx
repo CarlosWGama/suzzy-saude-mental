@@ -1,24 +1,25 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Image, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import { AppFont } from '../../../../../themes/fonts';
+import { PlantaRegada } from '../../../../../provider/questionario.service';
 
-export interface TermometroTermoMentalProps {
-    pontos:number
+export interface PlantaProps {
+    planta:PlantaRegada
 }
 
-export function Planta ({pontos}: TermometroTermoMentalProps) {
+export function Planta (props: PlantaProps) {
 
     //Valor entre 0 e 50
     const [ planta, setPlanta ] = React.useState<{imagem: any, descricao: string}>({imagem: null, descricao: ''})
-
+    const dias = props.planta.dias_seguidos;
 
     React.useEffect(() => {
-        if (pontos <= 2)  setPlanta({imagem: require('./../../../../../assets/planta/triste.png'), descricao: 'Sua planta ainda está triste, continue respondido todos os dias para aguá-la para que ela fique feliz!'})
-        else if (pontos <= 4) setPlanta({imagem: require('./../../../../../assets/planta/normal.png'), descricao: 'Sua planta está bem, continue respondendo todos os dias para torná-la bem viva!'})
+        if (dias <= 5)  setPlanta({imagem: require('./../../../../../assets/planta/triste.png'), descricao: 'Sua planta ainda está triste, continue respondido todos os dias para aguá-la para que ela fique feliz!'})
+        else if (dias <= 10) setPlanta({imagem: require('./../../../../../assets/planta/normal.png'), descricao: 'Sua planta está bem, continue respondendo todos os dias para torná-la bem viva!'})
         else setPlanta({imagem: require('./../../../../../assets/planta/feliz.png'), descricao: 'Parabéns! Continue assim para que ela siga feliz!'})
         
 
-    }, [pontos]);
+    }, [dias]);
     
    
     //===============
@@ -30,7 +31,7 @@ export function Planta ({pontos}: TermometroTermoMentalProps) {
             <Text style={styles.descricaoPlanta}>{planta.descricao}</Text>
             
             {/* FOOTER */}
-            <Text style={styles.descricao}>Dias seguidos regados: <Text style={{fontWeight: 'bold'}}>{pontos}</Text></Text>
+            <Text style={styles.descricao}>Dias seguidos regados: <Text style={{fontWeight: 'bold'}}>{dias}</Text></Text>
       </View>
     );
 }
