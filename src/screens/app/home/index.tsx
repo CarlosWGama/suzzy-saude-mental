@@ -8,11 +8,10 @@ import { AppCard, AppSquareButton } from "../../../themes/components";
 import { AppButton } from "../../../themes/components/button";
 import { AppFont } from "../../../themes/fonts";
 import AppTemplate from "../../../themes/layouts/template";
-import SobreAppModal from "./app";
 import SuporteEmocionalModal from "./suporte-emocional";
 import ApoioEmergencialModal from "./apoio-emergencial";
 import DoencasMentaisModal from "./doencas-mentais";
-import TermoMentalModal from "./termomental";
+import QuestionarioDiarioModal from "./questionario-diario";
 
 export default function HomeScreen() {
 
@@ -59,10 +58,9 @@ export default function HomeScreen() {
 
                         <View style={styles.opcoes}>
                             <AppSquareButton title={"Doenças \nMentais"} textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<DoencasMentaisModal/>)} />
-                            { usuario && <AppSquareButton title="Registros Diários"  onPress={() => handleOpenModal(<ApoioEmergencialModal/>)} />}
+                            { usuario && <AppSquareButton title="Registros Diários"  onPress={() => handleOpenModal(<QuestionarioDiarioModal/>)} />}
                             <AppSquareButton title={"Apoio \nEmergencial"} textStyle={{fontSize: 12}}   onPress={() => handleOpenModal(<ApoioEmergencialModal/>)} />
                             { usuario && <AppSquareButton title="Suporte Emocional" onPress={() => handleOpenModal(<SuporteEmocionalModal/>)} />}
-                            <AppSquareButton title="TermoMental" textStyle={{fontSize: 12}} onPress={() => handleOpenModal(<TermoMentalModal/>)}/>
                         </View>
                 </AppTemplate> 
             </ScrollView>

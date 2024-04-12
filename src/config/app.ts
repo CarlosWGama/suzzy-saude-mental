@@ -2,10 +2,7 @@ export const AppConfig = {
     nome: 'Mental Care',
     versao: '0.0.1',
 
-    //API_URL: 'http://192.168.0.45:8000/api',
-    API_URL: 'http://mentalcare.cwg.services/api',
-    //API_URL: 'http://192.168.127.159:8000/api',
- 
+    API_URL: process.env.EXPO_PUBLIC_API_URL,
     
     whatsapp: {
         CVV: '+5582991341378',
