@@ -1,5 +1,5 @@
 export const AppConfig = {
-    nome: 'Mental Care',
+    nome: 'CuidaVida',
     versao: '0.0.1',
 
     API_URL: process.env.EXPO_PUBLIC_API_URL,
