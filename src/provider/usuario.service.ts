@@ -64,6 +64,18 @@ const UsuariosService = {
     //Desloga o usuário
     logout: async() => {
         AsyncStorage.removeItem('jwt');
+    },
+
+    //Desloga o usuário
+    excluir: async(): Promise<{sucesso: boolean}> => {
+        try {
+            await api.delete(`/usuarios`);
+            AsyncStorage.removeItem('jwt');
+            return { sucesso: true}
+        } catch(e: any) {
+            return { sucesso: false}
+        }
+
     }
 }
 
