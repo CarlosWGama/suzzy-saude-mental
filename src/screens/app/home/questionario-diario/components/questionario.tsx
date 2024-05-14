@@ -52,7 +52,7 @@ export function QuestionarioDiario ({onResponder}: QuestionarioDiarioProps) {
     }
     //===============
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.container} >
          <Text style={styles.descricao}>Registre aqui como tem se sentido dia após dia, para podermos te acompanhar e auxiliar melhor durnate uma crise.</Text>
          <Text style={styles.descricao}>Responda com as carinhas de como tem se sentindo, para cada item abaixo, sendo o mais a esquerda, o sintoma não me afeta, e o mais a direita o sintoma me afeta muito.</Text>
          

@@ -8,7 +8,7 @@ export interface AppProps {
     color?: string
 } 
 
-export function AppBackButton({color}:AppProps) {
+export function AppBackButton({color = 'black'}:AppProps) {
 
     const nav = useNavigation();
 
@@ -17,10 +17,6 @@ export function AppBackButton({color}:AppProps) {
             <Text style={[styles.title, {color}]}>VOLTAR</Text>
         </TouchableOpacity>
     )
-}
-
-AppBackButton.defaultProps = {
-    color: 'black'
 }
 
 export default React.memo(AppBackButton)

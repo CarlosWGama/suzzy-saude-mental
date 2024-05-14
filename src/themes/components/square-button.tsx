@@ -14,7 +14,7 @@ export interface Props {
 
 }
 
-export function AppSquareButton({title, onPress, color, textColor, size, textStyle}: Props) {
+export function AppSquareButton({title, onPress, color = AppColors.PRIMARY, textColor = 'white', size = 110, textStyle = {}}: Props) {
 
     return (
         <TouchableOpacity onPress={onPress}>
@@ -26,13 +26,6 @@ export function AppSquareButton({title, onPress, color, textColor, size, textSty
 }
 
 export default React.memo(AppSquareButton)
-
-AppSquareButton.defaultProps = {
-    color: AppColors.PRIMARY,
-    textColor: 'white',
-    size: 110,
-    textStyle: {}
-}
 
 const styles = StyleSheet.create({
     container: {

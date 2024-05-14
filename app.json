@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "CuidaVida",
-    "slug": "cuida-vida",
+    "slug": "mentalcare",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

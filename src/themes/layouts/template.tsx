@@ -18,7 +18,7 @@ export interface AppTemplate {
 }
 
 
-export default function AppTemplate({backButton, children, titulo, background, color, fullComponent, smallHeader, icon}:AppTemplate) {
+export default function AppTemplate({backButton, children, titulo, background, color = AppColors.PRIMARY, fullComponent, smallHeader, icon}:AppTemplate) {
 
     const getBG = () => {
         if (background == 'abstract') return require('./../../assets/efeitos/abstract.png')
@@ -51,10 +51,6 @@ export default function AppTemplate({backButton, children, titulo, background, c
             </ImageBackground>
         </View>
     )
-}
-
-AppTemplate.defaultProps = {
-    color: AppColors.PRIMARY
 }
 
 const styles = StyleSheet.create({

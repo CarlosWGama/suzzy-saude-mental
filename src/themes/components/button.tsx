@@ -8,13 +8,13 @@ export interface Props {
     title: string,
     onPress(): void
     color?: string,
-    textColor: string
+    textColor?: string
     outline?:boolean,
     carregando?:boolean
     disabled?:boolean
 }
 
-export function AppButton({title, onPress, color, outline, textColor, carregando, disabled}: Props) {
+export function AppButton({title, onPress, color = AppColors.PRIMARY, outline, textColor = 'white', carregando, disabled}: Props) {
 
     return (
         <>
@@ -35,11 +35,6 @@ export function AppButton({title, onPress, color, outline, textColor, carregando
 }
 
 export default React.memo(AppButton)
-
-AppButton.defaultProps = {
-    color: AppColors.PRIMARY,
-    textColor: 'white'
-}
 
 const styles = StyleSheet.create({
     container: {
