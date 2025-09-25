@@ -31,7 +31,7 @@ export default function InicialScreen() {
         <AppIntroSlider 
             data={dados}
             nextLabel="PRÓXIMO"
-            showDoneButton={false}
+            showDoneButton={false}    
             renderItem={({item}) => (
                 <View style={{flex: 1, backgroundColor: item.cor, padding: 20}}>
                     {/* TITULO */}

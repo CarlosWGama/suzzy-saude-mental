@@ -54,7 +54,7 @@ function DoencasMentaisModal(props: AppProps) {
             <Text style={styles.titulo}>DOENÇAS MENTAIS</Text>
             <Text style={styles.descricao}>Desça abaixo e conheça os sinais e sintomas das principais doenças</Text>
                 
-            <ScrollView>
+            <ScrollView style={{paddingBottom: 70}}>
                 {/* ANSIEDADE */}
                 <Text style={styles.tituloTranstorno}>ANSIEDADE</Text>
                 <View style={{paddingHorizontal:40}}>

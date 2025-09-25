@@ -17,6 +17,7 @@ export function NavegacaoApp() {
         <Tab.Navigator screenOptions={{
             tabBarActiveTintColor: 'white',
             tabBarInactiveBackgroundColor: AppColors.BACKGROUND,
+            tabBarStyle: {height: 100},
             tabBarLabelStyle: { fontSize: 16},
             headerShown: false
         }}>

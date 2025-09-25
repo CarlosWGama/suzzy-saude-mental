@@ -9,7 +9,7 @@ export interface Props {
     onPress(): void
     color?: string,
     size?: number
-    textColor: string,
+    textColor?: string,
     textStyle?: StyleProp<TextStyle>,
 
 }

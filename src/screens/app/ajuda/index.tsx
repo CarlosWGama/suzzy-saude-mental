@@ -86,7 +86,7 @@ export default function AjudaScreen() {
                         <AppSquareButton color={AppColors.SECONDARY} title="Enviar minha localização" onPress={handleLocalizacao}  />
                     </View>
             
-                    <Text style={[styles.informacoes, {marginTop:-10}]}>Outros contatos</Text>
+                    <Text style={[styles.informacoes, {marginTop:10}]}>Outros contatos</Text>
 
                     <View style={styles.opcoes}>
                         <AppButton color={AppColors.SECONDARY} title="Hospital" onPress={() => handleTelefone('Hospital', '35201585', PedidoAjuda.HOSPITAL)} />

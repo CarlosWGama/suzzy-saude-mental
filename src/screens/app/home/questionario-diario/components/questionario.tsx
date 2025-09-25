@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignContent: 'center',
         padding: 10,
-        paddingBottom: 40
+        paddingBottom: 100
     },
     sintoma: {
         textAlign: 'center',
