@@ -4,6 +4,7 @@ import { AppBackButton } from "../components/back-button";
 import { AppColors } from "../colors";
 import { StatusBar } from "expo-status-bar";
 import { AppFont } from "../fonts";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 
 export interface AppTemplate {
     children: ReactNode,
@@ -30,24 +31,26 @@ export default function AppTemplate({backButton, children, titulo, background, c
         <View style={[styles.container, {backgroundColor: color, height: Dimensions.get("window").height}]}>
             <ImageBackground style={{width: '100%', height: '100%', paddingTop: 30}} source={getBG()}>
                 <StatusBar style="light" />
+                <SafeAreaView style={{flex: 1, paddingBottom:   useSafeAreaInsets().bottom*-1}}>
 
-                {/* HEADER */}
-                <View style={[styles.header, {height: smallHeader ? 75 : 150}]}>
-                    <View style={{flex:1}}>
-                        {backButton && <AppBackButton color="white" />}<Text></Text>
+                    {/* HEADER */}
+                    <View style={[styles.header, {height: smallHeader ? 75 : 150}]}>
+                        <View style={{flex:1}}>
+                            {backButton && <AppBackButton color="white" />}<Text></Text>
+                        </View>
+                        <>
+                            <Text style={styles.title}>{titulo}</Text>
+                            { icon }
+                        </>
                     </View>
-                    <>
-                        <Text style={styles.title}>{titulo}</Text>
-                        { icon }
-                    </>
-                </View>
 
-                {/* MAIN */}
-                <View style={styles.main}>
-                    {children}
-                </View>
+                    {/* MAIN */}
+                    <View style={styles.main}>
+                        {children}
+                    </View>
 
-                {fullComponent}
+                    {fullComponent}
+                </SafeAreaView>
             </ImageBackground>
         </View>
     )

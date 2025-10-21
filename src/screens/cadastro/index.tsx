@@ -12,6 +12,7 @@ import { AppSelect } from "../../themes/components/select";
 import { AppCheck } from "../../themes/components/check";
 import { useUsuariosService } from "../../provider/usuario.service";
 import Toast from 'react-native-toast-message';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function CadastroLogin() {
 
@@ -33,6 +34,7 @@ export default function CadastroLogin() {
     //=======================================================================================
     return (
         <View style={styles.container}>
+            <SafeAreaView style={{flex: 1}}>
             {/* HEADER */}
             <View style={{flexDirection:'row', justifyContent: 'space-between'}}>
                 <AppBackButton />
@@ -181,6 +183,7 @@ export default function CadastroLogin() {
                     </KeyboardAvoidingView>
                 </View>)}
             </Formik>
+            </SafeAreaView>
         </View>
     )
 }

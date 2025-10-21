@@ -20,14 +20,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.carloswgama.mentalcare"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.carloswgama.mentalcare"
+      "package": "com.carloswgama.mentalcare",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,9 +41,6 @@
       "eas": {
         "projectId": "afd28903-7b0d-4048-86eb-1b4c2a243173"
       }
-    },
-    "runtimeVersion": {
-      "policy": "sdkVersion"
     },
     "plugins": [
       "expo-font",

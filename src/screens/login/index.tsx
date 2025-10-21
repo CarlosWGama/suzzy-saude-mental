@@ -11,6 +11,7 @@ import * as Yup from 'yup';
 import { useContextApp } from "../../provider/context";
 import { useUsuariosService } from "../../provider/usuario.service";
 import Toast from 'react-native-toast-message';
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function LoginScreen() {
 
@@ -34,6 +35,7 @@ export default function LoginScreen() {
     //=======================================================================================
     return (
         <View style={styles.container}>
+            <SafeAreaView style={{flex: 1}}>
             {/* HEADER */}
             <Text style={styles.title}>Realize o seu acesso</Text>
             <Image source={ImgPersonagem7} style={styles.img}/>
@@ -65,6 +67,7 @@ export default function LoginScreen() {
                     <AppButton title="ACESSAR SEM CONTA" color={AppColors.SECONDARY}  outline onPress={() => nav.reset({index: 0, routes: [{name:'app'}]})} />
                 </View>)}
             </Formik>
+            </SafeAreaView>
         </View>
     )
 }
