@@ -20,13 +20,7 @@ export default function AjudaScreen() {
         const mensagem = 'Estou precisando de ajuda';
         ajudaSrv.cadastro(origemPedido);
 
-        const url = `whatsapp://send?phone=${whatsappNumero}&text=${mensagem}`;
-
-        const supported = await Linking.canOpenURL(url);
-        if (supported)
-            Linking.openURL(url);
-        else
-            Alert.alert(`Erro`, `Telefone não possui whatsapp`);
+        Linking.openURL(`whatsapp://send?phone=${whatsappNumero}&text=${mensagem}`);
     }
 
     // LIGAR PARA SAMU
@@ -37,18 +31,7 @@ export default function AjudaScreen() {
             {text: 'SIM', onPress: async () => {
                 //Salva uma tentativa de pedir ajuda
                 ajudaSrv.cadastro(origem);
-                const url = `tel:${tel}`;
-
-                // 1. Verifica se o dispositivo pode lidar com o esquema 'tel:'
-                const supported = await Linking.canOpenURL(url);
-
-                if (supported) {
-                    // 2. Se suportado, abre o discador
-                    await Linking.openURL(url);
-                } else {
-                    // 3. Se não (ex: em um tablet sem chip), exibe um alerta
-                    Alert.alert(`Erro`, `Não é possível realizar ligações neste dispositivo.`);
-                }
+                Linking.openURL(`tel:${tel}`);
             }},
             {text: 'NÃO, foi engano' },
         ])
