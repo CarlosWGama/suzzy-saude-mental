@@ -19,7 +19,14 @@ export default function AjudaScreen() {
     const handleWhatsApp = async (whatsappNumero: string, origemPedido:PedidoAjuda) => {
         const mensagem = 'Estou precisando de ajuda';
         ajudaSrv.cadastro(origemPedido);
-        Linking.openURL(`whatsapp://send?phone=${whatsappNumero}&text=${mensagem}`);
+
+        const url = `whatsapp://send?phone=${whatsappNumero}&text=${mensagem}`;
+
+        const supported = await Linking.canOpenURL(url);
+        if (supported)
+            Linking.openURL(url);
+        else
+            Alert.alert(`Erro`, `Telefone não possui whatsapp`);
     }
 
     // LIGAR PARA SAMU
@@ -27,11 +34,21 @@ export default function AjudaScreen() {
         
         
         Alert.alert(`Ligar ${local}`, `Você deseja realmente ligar para ${local}?`, [
-            {text: 'SIM', onPress: () => {
+            {text: 'SIM', onPress: async () => {
                 //Salva uma tentativa de pedir ajuda
                 ajudaSrv.cadastro(origem);
+                const url = `tel:${tel}`;
 
-                //Realiza a ligação
+                // 1. Verifica se o dispositivo pode lidar com o esquema 'tel:'
+                const supported = await Linking.canOpenURL(url);
+
+                if (supported) {
+                    // 2. Se suportado, abre o discador
+                    await Linking.openURL(url);
+                } else {
+                    // 3. Se não (ex: em um tablet sem chip), exibe um alerta
+                    Alert.alert(`Erro`, `Não é possível realizar ligações neste dispositivo.`);
+                }
             }},
             {text: 'NÃO, foi engano' },
         ])
@@ -39,7 +56,7 @@ export default function AjudaScreen() {
 
     // ENVIAR LOCALIZAÇÂO PARA CVV E AMIGOS
     const handleLocalizacao = async () => {
-        Alert.alert('Pedido de ajuda com localização', 'Deseja enviar um pedido de ajuda para CVV com sua localização? \n\nCaso tenha um contato de confiança cadastrado, também será enviado para o seu whatsapp', [
+        Alert.alert('Pedido de ajuda com localização', 'Deseja enviar um pedido de ajuda para CVV com sua localização?', [
             {text: 'SIM', onPress: async () => {
       
                     let { status } = await Location.requestForegroundPermissionsAsync();
