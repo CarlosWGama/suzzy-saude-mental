@@ -36,37 +36,37 @@ export default function LoginScreen() {
     return (
         <View style={styles.container}>
             <SafeAreaView style={{flex: 1}}>
-            {/* HEADER */}
-            <Text style={styles.title}>Realize o seu acesso</Text>
-            <Image source={ImgPersonagem7} style={styles.img}/>
-            <Toast />
-            
-            {/* LOGIN */}
-            <Formik
-                initialValues={{email: '', senha: ''}}
-                validationSchema={Yup.object().shape({
-                    email: Yup.string().required('Campo obrigatório').email('O campo precisa ser um email'),
-                    senha: Yup.string().required('Campo obrigatório').min(6, 'O campo precisa ter pelo menos 6 caracteres')
-                })}
-                onSubmit={handleLogin}
-            >
-                {({ handleChange, handleBlur, errors, touched, handleSubmit, isSubmitting }) => (<View style={styles.loginContainer}>
-                    <AppInput 
-                        title="Email" placeholder="Digite seu email"  error={errors.email} touched={touched.email}
-                        onBlur={handleBlur("email")}
-                        onChangeText={handleChange("email")}/>
-
-                    <AppInput 
-                        title="Senha" placeholder="Digite sua senha" senha   error={errors.senha} touched={touched.senha}
-                        onBlur={handleBlur("senha")}
-                        onChangeText={handleChange("senha")}/>
+                {/* HEADER */}
+                <Text style={styles.title}>Realize o seu acesso</Text>
+                <Image source={ImgPersonagem7} style={styles.img}/>
+                <Toast />
                 
+                {/* LOGIN */}
+                <Formik
+                    initialValues={{email: '', senha: ''}}
+                    validationSchema={Yup.object().shape({
+                        email: Yup.string().required('Campo obrigatório').email('O campo precisa ser um email'),
+                        senha: Yup.string().required('Campo obrigatório').min(6, 'O campo precisa ter pelo menos 6 caracteres')
+                    })}
+                    onSubmit={handleLogin}
+                >
+                    {({ handleChange, handleBlur, errors, touched, handleSubmit, isSubmitting }) => (<View style={styles.loginContainer}>
+                        <AppInput 
+                            title="Email" placeholder="Digite seu email"  error={errors.email} touched={touched.email}
+                            onBlur={handleBlur("email")}
+                            onChangeText={handleChange("email")}/>
 
-                    <AppButton title="ACESSAR" onPress={handleSubmit} carregando={isSubmitting} />
-                    <AppButton title="NÃO POSSUI CONTA? CLIQUE AQUI!"  outline onPress={() => nav.push("cadastro")} />
-                    <AppButton title="ACESSAR SEM CONTA" color={AppColors.SECONDARY}  outline onPress={() => nav.reset({index: 0, routes: [{name:'app'}]})} />
-                </View>)}
-            </Formik>
+                        <AppInput 
+                            title="Senha" placeholder="Digite sua senha" senha   error={errors.senha} touched={touched.senha}
+                            onBlur={handleBlur("senha")}
+                            onChangeText={handleChange("senha")}/>
+                    
+
+                        <AppButton title="ACESSAR" onPress={handleSubmit} carregando={isSubmitting} />
+                        <AppButton title="NÃO POSSUI CONTA? CLIQUE AQUI!"  outline onPress={() => nav.push("cadastro")} />
+                        <AppButton title="ACESSAR SEM CONTA" color={AppColors.SECONDARY}  outline onPress={() => nav.reset({index: 0, routes: [{name:'app'}]})} />
+                    </View>)}
+                </Formik>
             </SafeAreaView>
         </View>
     )
