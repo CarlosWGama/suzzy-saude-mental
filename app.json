@@ -21,7 +21,13 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.carloswgama.mentalcare"
+      "bundleIdentifier": "com.carloswgama.mentalcare",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {
