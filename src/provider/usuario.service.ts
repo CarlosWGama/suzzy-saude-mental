@@ -51,8 +51,8 @@ const UsuariosService = {
     atualizar: async (usuario: Usuario): Promise<{sucesso: boolean, erro?: any}> => {
         try {
             //O servidor busca o id do usuário autenticado
-            delete usuario.id;
-            delete usuario.email;
+            delete (usuario as any).id;
+            delete (usuario as any).email;
             await api.put(`/usuarios`, usuario);
             return {sucesso: true};
         } catch(e:any) {

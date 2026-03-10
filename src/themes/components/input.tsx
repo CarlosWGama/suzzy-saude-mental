@@ -5,14 +5,14 @@ import { AppFont } from '../fonts';
 import MaskInput from 'react-native-mask-input';
 
 export interface AppProps {
-    onChangeText(text: string):void,
+    onChangeText(text: string): void,
     title?: string,
-    error?: string,
+    error?: any,
     placeholder?: string,
     senha?: boolean,
-    touched?: boolean,
-    keyboardType?:KeyboardTypeOptions
-    onBlur?(campo: string):void
+    touched?: any,
+    keyboardType?: KeyboardTypeOptions
+    onBlur?: ((e: any) => void)
     mask?: any,
     value?: string
 }
@@ -24,8 +24,8 @@ export function AppInput(props: AppProps) {
         <>
             {props.title && <Text style={styles.text}>{props.title}</Text>}
             {/* COM MASCARA */}
-            { props.mask && 
-                 <MaskInput 
+            {props.mask &&
+                <MaskInput
                     placeholder={props.placeholder}
                     onChangeText={props.onChangeText}
                     secureTextEntry={props.senha}
@@ -33,9 +33,9 @@ export function AppInput(props: AppProps) {
                     onBlur={props.onBlur}
                     value={props.value}
                     mask={props.mask}
-                    style={styles.input} /> }
+                    style={styles.input} />}
             {/* SEM MASCARA */}
-            { !props.mask && <TextInput 
+            {!props.mask && <TextInput
                 placeholder={props.placeholder}
                 onChangeText={props.onChangeText}
                 secureTextEntry={props.senha}
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.22,
         shadowRadius: 2.22,
-        
+
         elevation: 3,
     }
 });

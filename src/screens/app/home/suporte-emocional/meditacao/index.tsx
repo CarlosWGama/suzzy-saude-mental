@@ -4,7 +4,7 @@ import { AppFont } from "../../../../../themes/fonts";
 import { AppButton } from "../../../../../themes/components/button";
 import { AppColors } from "../../../../../themes/colors";
 import PlayerMeditacao, { MeditacaoAudio } from "./player";
-import { Audio } from 'expo-av';
+import { useAudioPlayer, AudioSource } from 'expo-audio';
 
 export interface ModalProps {
     onBack():void;
@@ -13,7 +13,7 @@ export interface ModalProps {
 function MeditacaoModal({onBack}: ModalProps) {
 
     const [ playNumber, setPlayNumber ] = useState(0);
-    const [ sound, setSound ] = React.useState<Audio.Sound|null>(null);
+    const [ audioSource, setAudioSource ] = useState<AudioSource | null>(null);
     const [ pausing, setPausing ] = React.useState<boolean>(false);
 
     // ================================================
@@ -24,43 +24,37 @@ function MeditacaoModal({onBack}: ModalProps) {
         {number: 4, title: 'A FORÇA DA VIDA', audio: require('./audios/meditacao4.mp3') },
         {number: 5, title: 'AS 4 ESTAÇÕES', audio: require('./audios/meditacao5.mp3') },
     ]
+
+    const player = useAudioPlayer(audioSource);
+
     // ==========
     const playHandle = async (number:number) => {
-        await stopHandle();
+        stopHandle();
         setPlayNumber(number);
-        const audio = audios.find(item => item.number == number)
-        const { sound } = await Audio.Sound.createAsync(audio?.audio)
-        setSound(sound);
-        await sound.playAsync();
+        const audioItem = audios.find(item => item.number == number);
+        if (audioItem) {
+            setAudioSource(audioItem.audio);
+            player.play();
+        }
     }
     // =========
-    const stopHandle = async () => {
-        await sound?.stopAsync();
+    const stopHandle = () => {
+        player.pause();
+        player.seekTo(0);
         setPausing(false);
         setPlayNumber(0);
+        setAudioSource(null);
     }
 
     // =========
-    const playPauseHandle = async () => {
-        if (sound) 
-            !pausing ? await sound.pauseAsync() : await sound.playAsync();
-        
+    const playPauseHandle = () => {
+        if (player.playing) {
+            player.pause();
+        } else {
+            player.play();
+        }
         setPausing(!pausing);
     }
-
-    // ========
-    useEffect(() => {
-        stopHandle();
-    }, [])
-    // =======
-    useEffect(() => {
-        return sound
-          ? () => {
-              console.log('Fecha o áudio ao fechar a janela');
-              sound.unloadAsync();
-            }
-          : undefined;
-      }, []);
 
     //=================================================
     return (

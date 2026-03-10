@@ -194,7 +194,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         backgroundColor: AppColors.PRIMARY,
-        paddingTop: 30,
     },
     img: {
         height: 200, 

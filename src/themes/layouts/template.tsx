@@ -29,9 +29,9 @@ export default function AppTemplate({backButton, children, titulo, background, c
 
     return (
         <View style={[styles.container, {backgroundColor: color, height: Dimensions.get("window").height}]}>
-            <ImageBackground style={{width: '100%', height: '100%', paddingTop: 30}} source={getBG()}>
-                <StatusBar style="light" />
+            <ImageBackground style={{width: '100%', height: '100%'}} source={getBG()}>
                 <SafeAreaView style={{flex: 1, paddingBottom:   useSafeAreaInsets().bottom*-1}}>
+                <StatusBar style="light" />
 
                     {/* HEADER */}
                     <View style={[styles.header, {height: smallHeader ? 75 : 150}]}>

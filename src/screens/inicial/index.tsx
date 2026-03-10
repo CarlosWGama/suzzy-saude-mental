@@ -7,6 +7,7 @@ import { AppButton } from "../../themes/components";
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { NavParamsRoot } from "../../navigation";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type IntroSlide = {
     titulo: string,
@@ -28,32 +29,34 @@ export default function InicialScreen() {
     ]
     
     return (
-        <AppIntroSlider 
-            data={dados}
-            nextLabel="PRÓXIMO"
-            showDoneButton={false}    
-            renderItem={({item}) => (
-                <View style={{flex: 1, backgroundColor: item.cor, padding: 20}}>
-                    {/* TITULO */}
-                    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                        <Text style={styles.titulo}>{item.titulo}</Text>
-                    </View>
-                    {/* IMAGEM */}
-                    <View  style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
-                        <Image  source={item.imagem} style={styles.img} />
-                    </View>
-                    {/* DESCRICAO */}
-                    <View  style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
-                        <Text style={styles.descricao}>{item.descricao}</Text>
+        <SafeAreaView style={{flex: 1}}>
+            <AppIntroSlider 
+                data={dados}
+                nextLabel="PRÓXIMO"
+                showDoneButton={false}    
+                renderItem={({item}) => (
+                    <View style={{flex: 1, backgroundColor: item.cor, padding: 20}}>
+                        {/* TITULO */}
+                        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                            <Text style={styles.titulo}>{item.titulo}</Text>
+                        </View>
+                        {/* IMAGEM */}
+                        <View  style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
+                            <Image  source={item.imagem} style={styles.img} />
+                        </View>
+                        {/* DESCRICAO */}
+                        <View  style={{flex: 2, alignItems: 'center', justifyContent: 'center'}}>
+                            <Text style={styles.descricao}>{item.descricao}</Text>
 
-                        {item.fim && <View style={styles.buttons}>
-                            <AppButton title="Login/Criar Conta" onPress={() => navigation.reset({index: 0, routes: [{name: 'login'}]})} />
-                            <AppButton title="Acessar sem logar" color="white"  outline onPress={() => navigation.reset({index: 0, routes: [{name: 'app'}]})} />
-                        </View>}
+                            {item.fim && <View style={styles.buttons}>
+                                <AppButton title="Login/Criar Conta" onPress={() => navigation.reset({index: 0, routes: [{name: 'login'}]})} />
+                                <AppButton title="Acessar sem logar" color="white"  outline onPress={() => navigation.reset({index: 0, routes: [{name: 'app'}]})} />
+                            </View>}
+                        </View>
                     </View>
-                </View>
-            )}        
-        />
+                )}        
+                />
+            </SafeAreaView>
     )
 }
 
