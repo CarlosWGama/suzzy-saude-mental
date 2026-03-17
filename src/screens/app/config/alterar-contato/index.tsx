@@ -50,7 +50,7 @@ export default function AlterarContatoScreen() {
             Toast.show({ text1: 'Contato cadastrado com sucesso' });
             buscarContatos()
         } else
-            Toast.show({ text1: 'Houve uma falha ao cadastrar o usuário', text2: resposta.erro });
+            Toast.show({ text1: 'Houve uma falha ao cadastrar o usuário', text2: resposta.erro, type: 'error' });
     }
     // === 
     const handleAbrirModal = async () => {

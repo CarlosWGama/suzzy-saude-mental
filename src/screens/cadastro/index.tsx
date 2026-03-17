@@ -178,7 +178,7 @@ export default function CadastroLogin() {
                                 onChangeText={handleChange("uso_medicamento_quais")}/>}
 
 
-                            <AppButton title="CADASTRAR" color={AppColors.SUCCESS} onPress={handleSubmit} />
+                            <AppButton title="CADASTRAR" color={AppColors.SUCCESS} onPress={handleSubmit} disabled={isSubmitting} />
                         </ScrollView>
                         </KeyboardAvoidingView>
                     </View>)}

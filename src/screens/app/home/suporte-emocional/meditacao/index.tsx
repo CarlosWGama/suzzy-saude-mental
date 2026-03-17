@@ -4,36 +4,36 @@ import { AppFont } from "../../../../../themes/fonts";
 import { AppButton } from "../../../../../themes/components/button";
 import { AppColors } from "../../../../../themes/colors";
 import PlayerMeditacao, { MeditacaoAudio } from "./player";
-import { useAudioPlayer, AudioSource } from 'expo-audio';
+import { useAudioPlayer } from 'expo-audio';
 
 export interface ModalProps {
-    onBack():void;
+    onBack(): void;
 }
 
-function MeditacaoModal({onBack}: ModalProps) {
-
-    const [ playNumber, setPlayNumber ] = useState(0);
-    const [ audioSource, setAudioSource ] = useState<AudioSource | null>(null);
-    const [ pausing, setPausing ] = React.useState<boolean>(false);
+function MeditacaoModal({ onBack }: ModalProps) {
 
     // ================================================
     const audios: MeditacaoAudio[] = [
-        {number: 1, title: "LIMPEZA DOS \nPENSAMENTOS NEGATIVOS", audio: require('./audios/meditacao1.mp3') },
-        {number: 2, title: 'LIBERAR A ANSIEDADE', audio: require('./audios/meditacao2.mp3') },
-        {number: 3, title: 'TRANQUILIZAR A MENTE', audio: require('./audios/meditacao3.mp3') },
-        {number: 4, title: 'A FORÇA DA VIDA', audio: require('./audios/meditacao4.mp3') },
-        {number: 5, title: 'AS 4 ESTAÇÕES', audio: require('./audios/meditacao5.mp3') },
+        { number: 1, title: "LIMPEZA DOS \nPENSAMENTOS NEGATIVOS", audio: require('./audios/meditacao1.mp3') },
+        { number: 2, title: 'LIBERAR A ANSIEDADE', audio: require('./audios/meditacao2.mp3') },
+        { number: 3, title: 'TRANQUILIZAR A MENTE', audio: require('./audios/meditacao3.mp3') },
+        { number: 4, title: 'A FORÇA DA VIDA', audio: require('./audios/meditacao4.mp3') },
+        { number: 5, title: 'AS 4 ESTAÇÕES', audio: require('./audios/meditacao5.mp3') },
     ]
+    // =================
+    const [playNumber, setPlayNumber] = useState(0);
+    const [pausing, setPausing] = React.useState<boolean>(false);
 
-    const player = useAudioPlayer(audioSource);
+    const player = useAudioPlayer(audios[0].audio);
+
 
     // ==========
-    const playHandle = async (number:number) => {
+    const playHandle = async (number: number) => {
         stopHandle();
         setPlayNumber(number);
         const audioItem = audios.find(item => item.number == number);
         if (audioItem) {
-            setAudioSource(audioItem.audio);
+            player.replace(audioItem.audio)
             player.play();
         }
     }
@@ -43,7 +43,6 @@ function MeditacaoModal({onBack}: ModalProps) {
         player.seekTo(0);
         setPausing(false);
         setPlayNumber(0);
-        setAudioSource(null);
     }
 
     // =========
@@ -62,17 +61,17 @@ function MeditacaoModal({onBack}: ModalProps) {
             {/* HEADER */}
             <Text style={styles.title}>Meditações</Text>
             <Text style={styles.description}>As meditações a seguir podem te ajudar a desacelar</Text>
-            
+
             {/* AUDIOS */}
             {audios.map(audio => (
-                <PlayerMeditacao    
-                    key={audio.number} 
-                    item={audio} 
-                    playing={audio.number == playNumber } 
+                <PlayerMeditacao
+                    key={audio.number}
+                    item={audio}
+                    playing={audio.number == playNumber}
                     pausing={pausing}
-                    onStop={stopHandle} 
+                    onStop={stopHandle}
                     onPlay={playHandle}
-                    onPlayPause={playPauseHandle}    
+                    onPlayPause={playPauseHandle}
                 />
             ))}
 
@@ -80,7 +79,7 @@ function MeditacaoModal({onBack}: ModalProps) {
             <AppButton title="VOLTAR" color={AppColors.SUCCESS} onPress={() => {
                 stopHandle()
                 onBack()
-            }}/>
+            }} />
         </View>
     )
 }
