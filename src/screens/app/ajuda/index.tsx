@@ -26,7 +26,6 @@ export default function AjudaScreen() {
     // LIGAR PARA SAMU
     const handleTelefone = async (local:string, tel: string, origem: PedidoAjuda) => {
         
-        
         Alert.alert(`Ligar ${local}`, `Você deseja realmente ligar para ${local}?`, [
             {text: 'SIM', onPress: async () => {
                 //Salva uma tentativa de pedir ajuda
@@ -49,6 +48,9 @@ export default function AjudaScreen() {
                     }
               
                     let location = await Location.getCurrentPositionAsync({});
+
+                    ajudaSrv.cadastro(PedidoAjuda.CVV, location);
+
                     console.log(location)
 
                     Alert.alert('Sucesso', 'Seu pedido de ajuda foi enviado!')

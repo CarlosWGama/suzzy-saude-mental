@@ -18,7 +18,7 @@ function SuporteEmocionalModal(props: AppProps) {
         <>
             {/* TELA INICIAL */}
             { tela == 'inicial' && <View style={styles.container}>
-                <Text style={styles.titulo}>Apoio Emergêncial</Text>
+                <Text style={styles.titulo}>Suporte Emocional</Text>
                 <Text style={styles.descricao}>Conheça instituições que podem te ajudar</Text>
 
                 <View style={styles.cards}>

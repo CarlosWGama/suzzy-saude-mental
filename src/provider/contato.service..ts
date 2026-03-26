@@ -8,6 +8,7 @@ const ContatosService = {
     //Cadastra contato ao usuário logado
     cadastrar: async (data:any): Promise<{sucesso:boolean, erro?:any}> => {
         try {
+            console.log(data)
             const response = await api.post('/contatos', data);
             return {sucesso: response.status == 201};
         } catch(e:any) {

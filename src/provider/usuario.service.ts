@@ -1,17 +1,17 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import api from "./api"
 import { Usuario } from "../models/usuario";
+import { AppConfig } from "../config/app";
 
 
 const UsuariosService = {
     //Cadastra usuário
     cadastro: async (data:any): Promise<{sucesso:boolean, usuario?:any, erro?:any}> => {
         try {
-            console.log(data);
             const response = await api.post('/usuarios', data);
             return {sucesso: true, usuario: response.data};
         } catch(e:any) {
-            //console.log(e.response)
+            console.log(e.response)
             return {sucesso:false, erro: e.response?.data?.message}
         }
     },
@@ -51,8 +51,8 @@ const UsuariosService = {
     atualizar: async (usuario: Usuario): Promise<{sucesso: boolean, erro?: any}> => {
         try {
             //O servidor busca o id do usuário autenticado
-            delete usuario.id;
-            delete usuario.email;
+            delete (usuario as any).id;
+            delete (usuario as any).email;
             await api.put(`/usuarios`, usuario);
             return {sucesso: true};
         } catch(e:any) {
