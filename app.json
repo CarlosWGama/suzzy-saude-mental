@@ -56,8 +56,14 @@
     },
     "plugins": [
       "expo-font",
-      "expo-audio",
-      "expo-asset"
+      "expo-asset",
+      [
+        "expo-audio",
+        {
+          "enableBackgroundPlayback": true,
+          "enableBackgroundRecording": false
+        }
+      ]
     ],
     "runtimeVersion": "1.0.0"
   }
